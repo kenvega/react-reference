@@ -1,0 +1,31 @@
+<!-- Basic JavaScript-rendered Hello World -->
+<!-- http://localhost:3000/isolated/exercise/01.html -->
+
+<!-- normal exercise without extra credit -->
+<!-- <body>
+  <div id="root"></div>
+  <script type="module">
+    const div = document.createElement('div')
+    div.textContent = 'Hello world'
+    div.className = ''
+    const root = document.getElementById('root')
+    root.append(div)
+  </script>
+</body> -->
+
+
+<!-- exercise with the extra credit: creating the root node -->
+<body>
+  <script type="module">
+    // setting root div
+    const rootElement = document.createElement('div')
+    rootElement.setAttribute('id', 'root') // rootElement.id = 'root' // this one works too
+    document.body.append(rootElement)
+
+    // appending hello world to root div
+    const div = document.createElement('div')
+    div.textContent = 'Hello world'
+    div.className = 'container'
+    rootElement.append(div)
+  </script>
+</body>
