@@ -1,0 +1,6 @@
+what is the difference between
+
+  defining a variable inside/outside the scope of a component?
+    does it make any performance/memory difference?
+    is the variable accessible in other components?
+    is it created more times in one and not other?
