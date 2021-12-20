@@ -38,4 +38,26 @@ fundamentals
         https://developer.mozilla.org/en-US/docs/Web/API/Document/getElementById
         https://developer.mozilla.org/en-US/docs/Web/API/ParentNode/append
 
+  how do you create and render elements with the raw React API?
+
+    you will need to use these methods
+      React.createElement
+      ReactDOM.render
+
+    these methods need the library react and react-dom
+
+    example
+
+      const rootElement = document.getElementById('root')
+
+      const span1 = React.createElement('span', {children: 'Hello'})
+      const span2 = React.createElement('span', {children: 'World'})
+
+      const containerElement = React.createElement('div', {
+        className: 'container',
+        children: [span1, span2],
+      })
+
+      ReactDOM.render(containerElement, rootElement)
+
   
