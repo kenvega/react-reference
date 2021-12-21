@@ -46,7 +46,7 @@ fundamentals
 
     these methods need the library react and react-dom
 
-    example
+    example of a nested structure created with raw React API
 
       const rootElement = document.getElementById('root')
 
@@ -55,9 +55,19 @@ fundamentals
 
       const containerElement = React.createElement('div', {
         className: 'container',
-        children: [span1, span2],
+        children: [span1, span2], // children can be a single primitive value or an array
       })
 
       ReactDOM.render(containerElement, rootElement)
 
-  
+  what does createElement returns in pure javascript?
+
+    it returns an object that you can log the console
+
+      some of their properties are
+        $$typeof - to indicate that is in fact a react element
+        key
+        props - the second argument object that you pass to createElement
+        ref
+        type - the type of the html element that will be rendered. e.g. div
+
