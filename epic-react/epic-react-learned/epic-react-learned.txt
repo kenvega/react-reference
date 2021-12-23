@@ -71,3 +71,24 @@ fundamentals
         ref
         type - the type of the html element that will be rendered. e.g. div
 
+  is there a difference between creating elements with jsx and the raw react api?
+
+    it seems it doesn't
+      this code creates a react element with its raw api
+        const element = React.createElement('div', {
+          className: 'container',
+          children: 'Hello World',
+        })
+
+      this code creates a react element with jsx
+        const element = <div className="container">Hello World</div>
+
+      both can be rendered to the page with the render method
+        ReactDOM.render(element, document.getElementById('root'))
+
+      you could console.log both elements and will get an object with the same properties
+
+  what does babel does when imported as a script?
+
+    it will search for any script tags with type="text/babel" and it will compile it
+      javascript actually won't do anything to those script types 
