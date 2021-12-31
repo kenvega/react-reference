@@ -4,3 +4,9 @@ what is the difference between
     does it make any performance/memory difference?
     is the variable accessible in other components?
     is it created more times in one and not other?
+
+What does this warning mean?
+  Cannot update during an existing state transition (such as within `render`).
+  Render methods should be a pure function of props and state.
+
+  Also what caused it? and how to fix it?
