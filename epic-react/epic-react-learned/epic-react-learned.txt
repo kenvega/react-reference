@@ -91,4 +91,4 @@ fundamentals
   what does babel does when imported as a script?
 
     it will search for any script tags with type="text/babel" and it will compile it
-      javascript actually won't do anything to those script types 
+      javascript actually won't do anything to those script types
