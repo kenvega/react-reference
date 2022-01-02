@@ -1,0 +1,12 @@
+Fetch API
+  already built in in modern browsers
+  you can find it in the window object through window.fetch
+
+  
+
+
+
+source: https://www.freecodecamp.org/news/fetch-data-react/
+
+
+https://reactjs.org/docs/faq-ajax.html
