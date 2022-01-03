@@ -92,3 +92,14 @@ fundamentals
 
     it will search for any script tags with type="text/babel" and it will compile it
       javascript actually won't do anything to those script types
+
+    babel can for example compile your jsx code to javascript code that uses the raw React API
+      e.g.
+        const ui = <h1 id="greeting">Hey there</h1>
+
+      gets transformed to
+        const ui = React.createElement('h1', {id: 'greeting', children: 'Hey there'})
+
+    you can tests more examples here: https://babeljs.io/repl
+
+  
