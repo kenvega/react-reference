@@ -10,3 +10,9 @@ What does this warning mean?
   Render methods should be a pure function of props and state.
 
   Also what caused it? and how to fix it?
+
+how to catch all errors in your react app?
+  how to console all of them automatically or send them to sentry to check them later
+
+what are the most useful features of react dev tools that I can use?
+
