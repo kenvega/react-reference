@@ -1,22 +1,37 @@
 import logo from "./logo.svg";
 import { Routes, Route, Link } from "react-router-dom";
 import "./App.css";
-import FetchApi from "./FetchApi";
-import Axios from "./Axios";
+import FetchApi from "./fetchingComponents/FetchApi";
+import Axios from "./fetchingComponents/Axios";
+import AsyncAwait from "./fetchingComponents/AsyncAwait";
 
 function App() {
   return (
     <div className="App">
       <img src={logo} className="App-logo" alt="logo" />
-      <h1>hello</h1>
+      <h1>Ways to fetch data with react</h1>
       <Routes>
-        <Route path="/" element={<FetchApi />} />
-        <Route path="/main" element={<Axios />} />
+        <Route
+          path="/"
+          element={
+            <>
+              <h2>Home</h2>
+              <p>Click links to check other ways</p>
+            </>
+          }
+        />
+        <Route path="/fetch" element={<FetchApi />} />
+        <Route path="/axios" element={<Axios />} />
+        <Route path="/async" element={<AsyncAwait />} />
       </Routes>
-      <h1>links</h1>
-      <Link to="/">home link</Link>
+      <h2>Links:</h2>
+      <Link to="/">home</Link>
       <br />
-      <Link to="/main">main link</Link>
+      <Link to="/fetch">fetch</Link>
+      <br />
+      <Link to="/axios">axios</Link>
+      <br />
+      <Link to="/async">async await</Link>
     </div>
   );
 }
