@@ -6,7 +6,26 @@ Fetch API
 
 
 
+Where to fetch in React's component tree?
+  in general, if you have a complex component tree
+    fetch data on the common parent of the components that are interested on the fetched data
+
+How to fetch data in React?
+What about loading spinner and error handling?
+How to fetch data with Axios in React
+How to test data fetching in React?
+How to fetch data with Async/Await in React?
+How to fetch data in Higher-Order Components?
+How to fetch data in Render Props?
+How to fetch data from a GraphQL API in React?
+
+
 source: https://www.freecodecamp.org/news/fetch-data-react/
 
 
 https://reactjs.org/docs/faq-ajax.html
+
+
+https://www.robinwieruch.de/react-fetching-data/
+
+https://www.robinwieruch.de/react-hooks-fetch-data/

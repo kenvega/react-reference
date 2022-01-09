@@ -16,7 +16,7 @@ function App() {
           element={
             <>
               <h2>Home</h2>
-              <p>Click links to check other ways</p>
+              <p>Click links below to check ways to fetch</p>
             </>
           }
         />

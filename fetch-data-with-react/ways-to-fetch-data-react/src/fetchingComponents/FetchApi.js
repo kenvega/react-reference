@@ -31,7 +31,7 @@ function FetchApi() {
 
   return (
     <>
-      <h2>FetchApi</h2>
+      <h2>Fetch Api (built-in)</h2>
       {loading ? <Loading /> : <User data={data} />}
     </>
   );
