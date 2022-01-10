@@ -3,8 +3,14 @@
 }
 
 .App-logo {
-  height: 40vmin;
+  height: 20vmin;
   pointer-events: none;
+}
+
+.links {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
 }
 
 @media (prefers-reduced-motion: no-preference) {

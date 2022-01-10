@@ -4,6 +4,7 @@ import "./App.css";
 import FetchApi from "./fetchingComponents/FetchApi";
 import Axios from "./fetchingComponents/Axios";
 import AsyncAwait from "./fetchingComponents/AsyncAwait";
+import ReactFetchHook from "./fetchingComponents/ReactFetchHook";
 
 function App() {
   return (
@@ -23,15 +24,16 @@ function App() {
         <Route path="/fetch" element={<FetchApi />} />
         <Route path="/axios" element={<Axios />} />
         <Route path="/async" element={<AsyncAwait />} />
+        <Route path="/react-fetch-hook" element={<ReactFetchHook />} />
       </Routes>
       <h2>Links:</h2>
-      <Link to="/">home</Link>
-      <br />
-      <Link to="/fetch">fetch</Link>
-      <br />
-      <Link to="/axios">axios</Link>
-      <br />
-      <Link to="/async">async await</Link>
+      <div className="links">
+        <Link to="/">home</Link>
+        <Link to="/fetch">fetch</Link>
+        <Link to="/axios">axios</Link>
+        <Link to="/async">async await</Link>
+        <Link to="/react-fetch-hook">react fetch hook</Link>
+      </div>
     </div>
   );
 }
