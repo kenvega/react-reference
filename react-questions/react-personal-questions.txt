@@ -1,3 +1,8 @@
+What are all the possible ways to do form validations?
+  this might be a way to check all libraries just like all ways to fetch-data
+
+How error boundaries work in react and what is its benefit? Is it built-in or do I have to install something else?
+
 what is the difference between
 
   defining a variable inside/outside the scope of a component?
@@ -21,4 +26,6 @@ how to catch all errors in your react app?
   how to console all of them automatically or send them to sentry to check them later
 
 what are the most useful features of react dev tools that I can use?
+
+
 
