@@ -4,23 +4,10 @@ What are all the possible ways to do form validations?
 How error boundaries work in react and what is its benefit? Is it built-in or do I have to install something else?
 
 what is the difference between
-
   defining a variable inside/outside the scope of a component?
     does it make any performance/memory difference?
     is the variable accessible in other components?
     is it created more times in one and not other?
-
-What does this warning mean?
-  Cannot update during an existing state transition (such as within `render`).
-  Render methods should be a pure function of props and state.
-
-  Also what caused it? and how to fix it?
-
-what does this other warning mean? Also what caused it? And how to fix it?
-
-  Can't perform a React state update on an unmounted component.
-  This is a no-op, but it indicates a memory leak in your application.
-  To fix, cancel all subscriptions and asynchronous tasks in a useEffect cleanup function.
 
 how to catch all errors in your react app?
   how to console all of them automatically or send them to sentry to check them later

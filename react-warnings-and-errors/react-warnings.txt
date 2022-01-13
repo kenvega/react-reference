@@ -1,0 +1,13 @@
+This document tries to respond to these questions for warnings I have seen when working with React.
+  what is the warning text I have seen?
+  what caused it in my case?
+  how to fix it for my case?
+
+
+Cannot update during an existing state transition (such as within `render`).
+  Render methods should be a pure function of props and state.
+
+
+Can't perform a React state update on an unmounted component.
+  This is a no-op, but it indicates a memory leak in your application.
+  To fix, cancel all subscriptions and asynchronous tasks in a useEffect cleanup function.
