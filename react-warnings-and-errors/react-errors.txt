@@ -1,5 +1,5 @@
 This document tries to respond to these questions for errors I have seen when working with React.
-  what is the warning text I have seen?
+  how to reproduce the error?
   what caused it in my case?
   how to fix it for my case?
 
@@ -8,3 +8,11 @@ ERROR in   Error: Child compilation failed:
   Module.createRequire is not a function
   ...
   1 ERROR in child compilations (Use 'stats.children: true' resp. '--stats-children' for more details)
+
+  solution:
+    this was an error showing up when starting the create-react-app with npm start
+
+    forgot to use the correct node version
+
+    fixed it by using correct version with node. probably this helps: https://medium.com/@kinduff/automatic-version-switch-for-nvm-ff9e00ae67f3
+
