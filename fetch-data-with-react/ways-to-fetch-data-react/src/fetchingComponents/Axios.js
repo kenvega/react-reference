@@ -10,6 +10,7 @@ function Axios() {
   useEffect(() => {
     axios("https://randomuser.me/api") // change to "/apia" to trigger an error
       .then((response) => {
+        console.log("this will be data on axios: ", response.data.results[0]);
         setData(response.data.results[0]); // with axios you don't need to parse json data
       })
       .catch((error) => {

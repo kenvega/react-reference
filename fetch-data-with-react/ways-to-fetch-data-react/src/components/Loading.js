@@ -1,7 +1,10 @@
 function Loading() {
   return (
     <>
-      <p>Loading...</p>
+      <p>Data from user</p>
+      <p>Id: Loading...</p>
+      <p>Email: Loading...</p>
+      <p>Full name: Loading...</p>
     </>
   );
 }
