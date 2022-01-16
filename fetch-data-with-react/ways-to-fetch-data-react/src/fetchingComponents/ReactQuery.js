@@ -1,11 +1,21 @@
 import { useEffect, useState } from "react";
+import axios from "axios";
+
+import { useQuery } from "react-query";
 
 import User from "../components/User";
 import Loading from "../components/Loading";
 
 function ReactQuery() {
-  const [data, setData] = useState(null);
-  const [loading, setLoading] = useState(true);
+  // const [data, setData] = useState(null);
+  // const [loading, setLoading] = useState(true);
+
+  // console.log("useQuery: ", useQuery);
+  // useQuery needs a unique key for the data we are fetching
+
+  axios.get("https://pokeapi.co/api/v2/pokemon").then((response) => {
+    console.log(response);
+  });
 
   // useEffect(() => {
   //   axios("https://randomuser.me/api") // change to "/apia" to trigger an error
@@ -26,7 +36,7 @@ function ReactQuery() {
   return (
     <>
       <h2>React Query</h2>
-      {loading ? <Loading /> : <User data={data} />}
+      {/* {loading ? <Loading /> : <User data={data} />} */}
     </>
   );
 }
