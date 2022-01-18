@@ -16,3 +16,11 @@ what are the most useful features of react dev tools that I can use?
 
 
 
+if you have logic and view components
+
+  and you have a state that is only going to be used and changed in the view component
+  then is it better to still create it and pass it to the view component?
+  or is it better to only create it in the view component?
+
+  an experienced friend told me it's better to create state at the nearest level where it's going to be used
+    so in this case, even with the names logic and view, it would be better to create that state in the view component
