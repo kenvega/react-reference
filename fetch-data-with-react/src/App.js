@@ -2,9 +2,10 @@ import logo from "./logo.svg";
 import { Routes, Route, Link } from "react-router-dom";
 import "./App.css";
 import Home from "./components/Home";
-import FetchApi from "./fetchingComponents/FetchApi";
-import Axios from "./fetchingComponents/Axios";
-import AsyncAwait from "./fetchingComponents/AsyncAwait";
+// component names can't start with a number but I want them to be numbered so there is a default order on fetchingComponents files
+import F01FetchApi from "./fetchingComponents/F01FetchApi";
+import F02Axios from "./fetchingComponents/F02Axios";
+import F03AsyncAwait from "./fetchingComponents/F03AsyncAwait";
 import ReactFetchHook from "./fetchingComponents/ReactFetchHook";
 import ReactQuery from "./fetchingComponents/ReactQuery";
 
@@ -15,16 +16,16 @@ function App() {
       <h1>Ways to fetch data with react</h1>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/fetch" element={<FetchApi />} />
-        <Route path="/axios" element={<Axios />} />
-        <Route path="/async" element={<AsyncAwait />} />
+        <Route path="/fetch" element={<F01FetchApi />} />
+        <Route path="/axios" element={<F02Axios />} />
+        <Route path="/async" element={<F03AsyncAwait />} />
         <Route path="/react-fetch-hook" element={<ReactFetchHook />} />
         <Route path="/react-query" element={<ReactQuery />} />
       </Routes>
       <h2>Links:</h2>
       <div className="links">
         <Link to="/">home</Link>
-        <Link to="/fetch">fetch</Link>
+        <Link to="/fetch">fetch api</Link>
         <Link to="/axios">axios</Link>
         <Link to="/async">async await</Link>
         <Link to="/react-fetch-hook">react fetch hook</Link>
