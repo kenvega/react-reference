@@ -30,3 +30,27 @@ if you have logic and view components
 
 
 how to do debounce on inputs (only send request once the user stopped writing for a moment)
+
+
+
+how to remove the <> and </> in this situation
+
+  <div>
+    {availableEvaluatorsForSelect.map(evaluator => (
+      <>
+        {evaluator.id !== currentOldEvaluator.id ? (
+          <Option key={evaluator.full_name} value={evaluator.token}>
+            ...
+          </Option>
+        ) : null}
+      </>
+    ))}
+  </div>
+
+  right now it will have a problem where you need a key for every element on what the map returns
+
+  if you remove the <> and </> it will throw an error because you are trying to return javascript directly
+
+  the only solution for this currently what just to filter before and create another variable you can map with
+
+  one friend gave me this link to check: https://reactjs.org/docs/fragments.html#keyed-fragments
