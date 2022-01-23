@@ -54,3 +54,7 @@ how to remove the <> and </> in this situation
   the only solution for this currently what just to filter before and create another variable you can map with
 
   one friend gave me this link to check: https://reactjs.org/docs/fragments.html#keyed-fragments
+
+  --
+
+  talking with a friend told me the way is to create a common variable for the repeating part and create use a wrapper for one side
