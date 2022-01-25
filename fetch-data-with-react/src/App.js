@@ -9,6 +9,9 @@ import F03AsyncAwait from "./fetchingComponents/F03AsyncAwait";
 import ReactFetchHook from "./fetchingComponents/ReactFetchHook";
 import ReactQuery from "./fetchingComponents/ReactQuery";
 
+import { QueryClient, QueryClientProvider } from "react-query";
+const queryClient = new QueryClient();
+
 function App() {
   return (
     <div className="App">
@@ -20,7 +23,15 @@ function App() {
         <Route path="/axios" element={<F02Axios />} />
         <Route path="/async" element={<F03AsyncAwait />} />
         <Route path="/react-fetch-hook" element={<ReactFetchHook />} />
-        <Route path="/react-query" element={<ReactQuery />} />
+        {/* TODO: try the component now */}
+        <Route
+          path="/react-query"
+          element={
+            <QueryClientProvider client={queryClient}>
+              <ReactQuery />
+            </QueryClientProvider>
+          }
+        />
       </Routes>
       <h2>Links:</h2>
       <div className="links">
