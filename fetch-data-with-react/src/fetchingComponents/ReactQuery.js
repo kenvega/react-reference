@@ -1,51 +1,37 @@
-// import { useEffect, useState } from "react";
 import axios from "axios";
+import User from "../components/User";
+import Loading from "../components/Loading";
 
 import { useQuery } from "react-query";
-// TODO: it seems that it needs a QueryClientProvider
 // source: https://react-query.tanstack.com/reference/QueryClientProvider
 
-// import User from "../components/User";
-// import Loading from "../components/Loading";
-
 function ReactQuery() {
-  // const [data, setData] = useState(null);
-  // const [loading, setLoading] = useState(true);
+  // queryInfo.data has the same information that response.data when you fetch with axios
+  // but queryInfo.data starts as undefined
 
-  // console.log("useQuery: ", useQuery);
-  // useQuery needs a unique key for the data we are fetching
+  // TODO: what is the key for? it seems it can be anything.. even 'pokemon'
+  const queryInfo = useQuery("pokemon", () => {
+    return axios("https://randomuser.me/api").then(
+      (response) => response.data.results[0]
+    );
+    // you could also return with fetch, but you will always need to return a promise
+    // return fetch("https://randomuser.me/api").then((res) => res.json())
+  });
 
-  // axios.get("https://pokeapi.co/api/v2/pokemon").then((response) => {
-  //   console.log(response.data);
-  // });
+  console.log("queryInfo: ", queryInfo);
 
-  const queryInfo = useQuery("pokemon", () =>
-    fetch("https://pokeapi.co/api/v2/pokemon").then((res) => res.json())
-  );
-  // console.log("queryInfo: ", queryInfo);
-
-  // useEffect(() => {
-  //   axios("https://randomuser.me/api") // change to "/apia" to trigger an error
-  //     .then((response) => {
-  //       console.log("this will be data on axios: ", response.data.results[0]);
-  //       setData(response.data.results[0]); // with axios you don't need to parse json data
-  //     })
-  //     .catch((error) => {
-  //       console.error(error);
-  //       throw error;
-  //     })
-  //     .finally(() => {
-  //       // runs when promise finishes (being successful or not)
-  //       setLoading(false);
-  //     });
-  // }, []);
+  // the queryInfo object has info about loading, error, or success
+  const loading = queryInfo.isLoading;
+  const data = queryInfo.data;
 
   return (
     <>
       <h2>React Query</h2>
-      {/* {loading ? <Loading /> : <User data={data} />} */}
+      {loading ? <Loading /> : <User data={data} />}
     </>
   );
 }
 
 export default ReactQuery;
+
+// other endpoint to try: "https://pokeapi.co/api/v2/pokemon"
