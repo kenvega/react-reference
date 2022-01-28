@@ -10,15 +10,17 @@ function ReactQuery() {
   // but queryInfo.data starts as undefined
 
   // TODO: what is the key for? it seems it can be anything.. even 'pokemon'
-  const queryInfo = useQuery("pokemon", () => {
-    // can't trigger error changing "/api" to "/apia". stays in loading state
-    return axios("https://randomuser.me/api").then(
-      (response) => response.data.results[0]
-    );
+  const queryInfo = useQuery("pokemon", async () => {
+    await new Promise((resolve) => setTimeout(resolve, 1000));
 
     if (true) {
       throw new Error("Test error!");
     }
+
+    // can't trigger error changing "/api" to "/apia". stays in loading state
+    return axios("https://randomuser.me/api").then(
+      (response) => response.data.results[0]
+    );
     // you could also return with fetch, but you will always need to return a promise
     // return fetch("https://randomuser.me/api").then((res) => res.json())
   });
