@@ -1,23 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import { Routes, Route, Link } from "react-router-dom";
+import "./App.css";
+import Home from "./Home";
+import ContextExample1 from "./ContextExample1";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <img src={logo} className="App-logo" alt="logo" />
+      <h1>How context works</h1>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/context_example_1" element={<ContextExample1 />} />
+      </Routes>
+      <h2>Links:</h2>
+      <div className="links">
+        <Link to="/">home</Link>
+        <Link to="/context_example_1">context example 1</Link>
+      </div>
     </div>
   );
 }

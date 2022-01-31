@@ -1,0 +1,53 @@
+context
+  a way to pass data through your components without having to pass down props manually (prop drilling)
+
+when to use context
+  you have data that can be considered global for a component tree. examples:
+    the authenticated user
+    the theme of the application
+    the preffered language of the application
+
+before using context
+  notice that if your component is aware of some context, it makes it less reusable
+  
+  if you want to use context just because you are passing down props to many components
+    and in the end only the most nested child uses those props
+      then you might prefer to pass all the component itself as a single prop
+        instead of passing many props through all the component tree
+
+    example
+      instead of passing user and avatarSize through all of these components:
+        <Page user={user} avatarSize={avatarSize} />
+        // ... which renders ...
+        <PageLayout user={user} avatarSize={avatarSize} />
+        // ... which renders ...
+        <NavigationBar user={user} avatarSize={avatarSize} />
+        // ... which renders ...
+        <Link href={user.permalink}>
+          <Avatar user={user} size={avatarSize} />
+        </Link>
+
+      create a single prop containing the component and pass only that:
+        function Page(props) {
+          const user = props.user;
+          const userLink = (
+            <Link href={user.permalink}>
+              <Avatar user={user} size={props.avatarSize} />
+            </Link>
+          );
+          return <PageLayout userLink={userLink} />;
+        }
+
+        // Now, we have:
+        <Page user={user} avatarSize={avatarSize} />
+        // ... which renders ...
+        <PageLayout userLink={...} />
+        // ... which renders ...
+        <NavigationBar userLink={...} />
+        // ... which renders ...
+        {props.userLink}
+
+
+
+source:
+  https://reactjs.org/docs/context.html
