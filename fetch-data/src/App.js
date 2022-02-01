@@ -23,7 +23,8 @@ function App() {
         <Route path="/axios" element={<F02Axios />} />
         <Route path="/async" element={<F03AsyncAwait />} />
         <Route path="/react-fetch-hook" element={<ReactFetchHook />} />
-        {/* TODO: try the component now */}
+        {/* react-query needs a wrapper to work... but all of this could probably be in the same component (?) */}
+        {/* TODO: try to pass this to the component below */}
         <Route
           path="/react-query"
           element={
