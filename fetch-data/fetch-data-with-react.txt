@@ -6,14 +6,42 @@ Fetch API
 
 
 
-Where to fetch in React's component tree?
-  in general, if you have a complex component tree
+Where to fetch in your React app when you have a complex component tree?
+
+  Things to consider which component should fetch the data
+
     fetch data on the common parent of the components that are interested on the fetched data
 
+    also where you need to show a conditional load indicator when you are fetching the data
+      the most common parent to the components interested in the data could be also the one that shows the loading
+
+      but if you need to show it on a more top level component, then you should fetch the data there
+
+    the same happens for where you need to show an error message when the fetching fails
+
 How to fetch data in React?
+
+  in component based react
+
+    you most likely fetch in componentDidMount() then render a loading spinner while is fetching
+
+    when is done the state gets updated with setState()
+      and once that happens the render() method runs again with the data fetched
+      here the loading state also goes from false to true
+      and the error state gets filled if there was an error with the request
+
 What about loading spinner and error handling?
+
+  you can then render conditionally the data or the error if there was any
+
 How to fetch data with Axios in React
+
+  using axios you make sure errors like 404 go automatically to the catch of your js request
+
 How to test data fetching in React?
+
+  WIP: https://www.robinwieruch.de/react-fetching-data/#:~:text=a%20axios.post().-,HOW%20TO%20TEST%20DATA%20FETCHING%20IN%20REACT%3F,-So%20what%20about
+
 How to fetch data with Async/Await in React?
 How to fetch data in Higher-Order Components?
 How to fetch data in Render Props?

@@ -11,7 +11,7 @@ function F02Axios() {
     axios("https://randomuser.me/api") // change to "/apia" to trigger an error
       .then((response) => {
         console.log("this will be data on axios: ", response.data.results[0]);
-        setData(response.data.results[0]); // with axios you don't need to parse json data
+        setData(response.data.results[0]); // with axios you don't need to parse json data because already returns a JSON response for you
       })
       .catch((error) => {
         console.error(error);
@@ -32,3 +32,11 @@ function F02Axios() {
 }
 
 export default F02Axios;
+
+// extra notes:
+/*
+
+  using axios instead of fetch api makes sure you always send your request errors to catch automatically
+    source: https://www.robinwieruch.de/react-fetching-data/#:~:text=when%20using%20axios%20you%20can%20be%20sure%20that
+
+*/
