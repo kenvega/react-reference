@@ -40,20 +40,24 @@ How to fetch data with Axios in React
 
 How to test data fetching in React?
 
-  WIP: https://www.robinwieruch.de/react-fetching-data/#:~:text=a%20axios.post().-,HOW%20TO%20TEST%20DATA%20FETCHING%20IN%20REACT%3F,-So%20what%20about
+  you can test with jest, or enzyme
 
 How to fetch data with Async/Await in React?
-How to fetch data in Higher-Order Components?
-How to fetch data in Render Props?
-How to fetch data from a GraphQL API in React?
+
+  set the componentDidMount as an async function and await there for the request to finish
+
+  use try and catch to handle the error
 
 
-source: https://www.freecodecamp.org/news/fetch-data-react/
+sources:
+- https://www.freecodecamp.org/news/fetch-data-react/
+- https://www.robinwieruch.de/react-fetching-data/
 
+
+https://www.robinwieruch.de/react-hooks-fetch-data/
 
 https://reactjs.org/docs/faq-ajax.html
 
 
 https://www.robinwieruch.de/react-fetching-data/
 
-https://www.robinwieruch.de/react-hooks-fetch-data/
