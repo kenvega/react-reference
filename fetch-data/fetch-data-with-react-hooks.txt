@@ -1,3 +1,5 @@
+how to fetch data with hooks
+  you would normally fetch data inside a useEffect with an empty dependency array
 
 
 source: https://www.robinwieruch.de/react-hooks-fetch-data/
