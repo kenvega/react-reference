@@ -1,5 +1,8 @@
 how to fetch data with hooks
   you would normally fetch data inside a useEffect with an empty dependency array
 
+how to handle errors and loading state with hooks
+  you can use the hook useState to set the error and loading states in the component
+
 
 source: https://www.robinwieruch.de/react-hooks-fetch-data/
