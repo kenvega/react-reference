@@ -4,5 +4,12 @@ how to fetch data with hooks
 how to handle errors and loading state with hooks
   you can use the hook useState to set the error and loading states in the component
 
+you can also create custom data fetching hooks
+  create a function that use all related to the request. e.g
+    - axios
+    - useState to store the data in state, and also error and loading state
+    - useEffect to trigger the fetching of the data
+  
+  then finally return an array like hooks do and fill it with the important data you need
 
 source: https://www.robinwieruch.de/react-hooks-fetch-data/
