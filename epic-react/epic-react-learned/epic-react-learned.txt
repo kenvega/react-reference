@@ -102,4 +102,37 @@ fundamentals
 
     you can tests more examples here: https://babeljs.io/repl
 
-  
+    you can import babel in your html file and use it to transpile your code directly in your browser
+      but this should only be for testing and not for production
+      for production you pre compile your code and then send the compiled version to the browser
+
+  jsx
+
+    can be converted by babel to regular javascript
+
+    it's an alternative to create your react elements without using the raw React API
+
+    it is similar to html but also it lets you use javascript at the same time
+
+    because it uses javascript keywords there are some element tags that have some specific changes
+
+      - the class for a tag cannot be named class. instead use className
+
+      - the for attribute on a label is renamed to htmlFor
+
+      - more differences can be found at: https://reactjs.org/docs/dom-elements.html#differences-in-attributes
+
+    you can also interpolate javascript variables into your tags
+
+    if you use the in browser babel version to test (imported script tag in your html file)
+      you can inspect your browser and find the compiled version from your jsx code to a regular javascript code
+        this compiled version was made by babel and it is what the browser actually understands
+
+    you can create a react element with jsx, assign it to a javascript variable and log it
+      and you will get the exact same object you get when creating that object with the raw React API
+
+  so in summary until now, to make react work
+    you need React library to create react elements
+    you need react-dom to put those react elements to the page
+    and you need babel to create them with jsx instead of the raw React API
+
