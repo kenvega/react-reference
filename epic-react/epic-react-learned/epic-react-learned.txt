@@ -113,6 +113,7 @@ fundamentals
     it's an alternative to create your react elements without using the raw React API
 
     it is similar to html but also it lets you use javascript at the same time
+      so you can create html tags like before but you can also interpolate javascript with that
 
     because it uses javascript keywords there are some element tags that have some specific changes
 
@@ -122,14 +123,21 @@ fundamentals
 
       - more differences can be found at: https://reactjs.org/docs/dom-elements.html#differences-in-attributes
 
-    you can also interpolate javascript variables into your tags
-
-    if you use the in browser babel version to test (imported script tag in your html file)
+    if you use the in-browser babel version to test (imported script tag in your html file)
       you can inspect your browser and find the compiled version from your jsx code to a regular javascript code
         this compiled version was made by babel and it is what the browser actually understands
 
     you can create a react element with jsx, assign it to a javascript variable and log it
       and you will get the exact same object you get when creating that object with the raw React API
+
+    so your babel code with jsx end up being compiled to a script tag inside in the head tag of your html file
+      then that compiled version uses regular raw React API
+
+    you cannot do statements inside of jsx directly because in the end remember that there is going to be a conversion
+      to the raw React API which is createReactElement which recieve 3 arguments
+        those arguments can only be in the end values... and cannot be statements... so no way to set statements inside jsx
+    
+    
 
   so in summary until now, to make react work
     you need React library to create react elements
