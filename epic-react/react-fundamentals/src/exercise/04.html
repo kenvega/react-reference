@@ -9,11 +9,12 @@
   <script type="text/babel">
     // 🐨 Make a function called `message` which returns the JSX we want to share
 
-    const message = ({children}) => {
-      return <div className="message">{children}</div>
-    }
+    
 
     // normal exercise without extra credit: convert raw react api to jsx
+    // const message = ({children}) => {
+    //   return <div className="message">{children}</div>
+    // }
     // const element = (
     //   <div className="container">
     //     {message({children: 'Hello World'})}
@@ -22,10 +23,25 @@
     // )
 
     // extra credit 1: you can use raw react api with a function as first argument
-    const helloElement = React.createElement(message, {children: "Hello World"})
+    // const message = ({children}) => {
+    //   return <div className="message">{children}</div>
+    // }
+    // const helloElement = React.createElement(message, {children: "Hello World"})
+    // const element = (
+    //   <div className="container">
+    //     {helloElement}
+    //   </div>
+    // )
+
+    // extra credit 2: use the name of the function in jsx.
+    // convetion: react components are functions that return jsx and when defined as functions should start uppercase else a warning comes up
+    const Message = ({children}) => {
+      return <div className="message">{children}</div>
+    }
+    const helloElement = ({children}) => (<Message>{children}</Message>);
     const element = (
       <div className="container">
-        {helloElement}
+        {helloElement({children: "hola"})}
       </div>
     )
 
