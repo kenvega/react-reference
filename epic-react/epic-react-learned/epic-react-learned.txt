@@ -145,4 +145,8 @@ fundamentals
   react components
     basically they are just functions that return a react element that is going to be rendered
 
-    
+  you can also make React.createElement receive a function instead of a string
+    - when recieving a string it will generate an html tag with that name
+    - when recieving a function it will render what that function returns (see extra credit 1 - exercise 4)
+        to avoid errors with this use an uppercase letter function. This way the function is treated as a react component
+          JSX syntax specification: uppercase elements tags are treated as references to a variables in scope

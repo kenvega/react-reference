@@ -7,11 +7,7 @@
   <script src="https://unpkg.com/react-dom@17.0.0/umd/react-dom.development.js"></script>
   <script src="https://unpkg.com/@babel/standalone@7.12.4/babel.js"></script>
   <script type="text/babel">
-    // 🐨 Make a function called `message` which returns the JSX we want to share
-
-    
-
-    // normal exercise without extra credit: convert raw react api to jsx
+    // normal exercise without extra credit: create a function that accepts children returns JSX
     // const message = ({children}) => {
     //   return <div className="message">{children}</div>
     // }
@@ -22,7 +18,7 @@
     //   </div>
     // )
 
-    // extra credit 1: you can use raw react api with a function as first argument
+    // extra credit 1: you can use raw React API with a function as first argument
     // const message = ({children}) => {
     //   return <div className="message">{children}</div>
     // }
@@ -35,17 +31,20 @@
 
     // extra credit 2: use the name of the function in jsx.
     // convetion: react components are functions that return jsx and when defined as functions should start uppercase else a warning comes up
-    const Message = ({children}) => {
-      return <div className="message">{children}</div>
-    }
-    const helloElement = ({children}) => (<Message>{children}</Message>);
-    const element = (
-      <div className="container">
-        {helloElement({children: "hola"})}
-      </div>
-    )
+    // const Message = ({children}) => {
+    //   return <div className="message">{children}</div>
+    // }
+    // const helloElement = ({children}) => (<Message>{children}</Message>);
+    // const element = (
+    //   <div className="container">
+    //     {helloElement({children: "Hello World"})}
+    //     <Message>Goodbye World</Message>
+    //   </div>
+    // )
 
-    // 💯 This is only the first step to making actual React components. The rest is in the extra credit!
+    // extra credit 3: proptypes
+
+
     ReactDOM.render(element, document.getElementById('root'))
   </script>
 </body>
