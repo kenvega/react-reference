@@ -150,3 +150,10 @@ fundamentals
     - when recieving a function it will render what that function returns (see extra credit 1 - exercise 4)
         to avoid errors with this use an uppercase letter function. This way the function is treated as a react component
           JSX syntax specification: uppercase elements tags are treated as references to a variables in scope
+
+  styling React components
+    you can style by creating css in a file, importing it and applying it with classNames
+
+    you can also style by adding a `style` prop to the html tags 
+    
+
