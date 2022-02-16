@@ -155,5 +155,20 @@ fundamentals
     you can style by creating css in a file, importing it and applying it with classNames
 
     you can also style by adding a `style` prop to the html tags 
-    
+
+  forms
+
+    the onSubmit attribute is set for forms so that you can handle what happens
+      here you can prevent the default behavior of forms (the full refresh page)
+
+    React creates and uses synthetic events instead of regular events in the DOM for performance reasons
+      but the difference between them you won't notice in daily use
+
+    console.dir - use it to log the properties instead of a DOM node (useful for event.target)
+
+    when inputs have an id, you can refer to them by that id from your event
+
+      <input id="usernameInputId" ... />
+
+      event.elements.usernameInputId.value
 
