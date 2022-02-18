@@ -4,9 +4,29 @@
 import * as React from 'react'
 
 function UsernameForm({onSubmitUsername}) {
+  // normal exercise
+  // const handleSubmit = e => {
+  //   e.preventDefault()
+  //   const value = e.target.elements[0].value
+  //   console.log('value: ', value)
+  //   onSubmitUsername(value)
+  // }
+
+  // return (
+  //   <form onSubmit={handleSubmit}>
+  //     <div>
+  //       <label htmlFor="my-input-text">Username:</label>
+  //       <input id="my-input-text" type="text" />
+  //     </div>
+  //     <button type="submit">Submit</button>
+  //   </form>
+  // )
+
+  // useRef
+  const usernameInputRef = React.useRef()
   const handleSubmit = e => {
     e.preventDefault()
-    const value = e.target.elements[0].value
+    const value = usernameInputRef.current.value
     console.log('value: ', value)
     onSubmitUsername(value)
   }
@@ -15,7 +35,7 @@ function UsernameForm({onSubmitUsername}) {
     <form onSubmit={handleSubmit}>
       <div>
         <label htmlFor="my-input-text">Username:</label>
-        <input id="my-input-text" type="text" />
+        <input ref={usernameInputRef} id="my-input-text" type="text" />
       </div>
       <button type="submit">Submit</button>
     </form>
