@@ -22,7 +22,7 @@ function UsernameForm({onSubmitUsername}) {
   //   </form>
   // )
 
-  // useRef
+  // extra credit 1: useRef
   // const usernameInputRef = React.useRef()
   // const handleSubmit = e => {
   //   e.preventDefault()
@@ -41,32 +41,59 @@ function UsernameForm({onSubmitUsername}) {
   //   </form>
   // )
 
-  // extra credit: validate lower case username
+  // extra credit 2: validate lower case username
+  // const [error, setError] = React.useState(null)
+  // const handleSubmit = e => {
+  //   e.preventDefault()
+  //   const value = e.target.elements[0].value
+  //   console.log('value: ', value)
+  //   onSubmitUsername(value)
+  // }
 
-  const [error, setError] = React.useState(null)
+  // const handleChange = event => {
+  //   const value = event.target.value
+  //   const isLowerCase = value.toLowerCase() === value
+  //   setError(!isLowerCase)
+  // }
+
+  // return (
+  //   <form onSubmit={handleSubmit}>
+  //     <div>
+  //       <label htmlFor="my-input-text">Username:</label>
+  //       <input id="my-input-text" type="text" onChange={handleChange} />
+  //       <div>{error ? 'username should be lowercase' : ''}</div>
+  //     </div>
+  //     <button type="submit" disabled={error}>
+  //       Submit
+  //     </button>
+  //   </form>
+  // )
+
+  // extra credit 3: control the input with React and prevent user from putting uppercase text
+  const [value, setValue] = React.useState('')
+
   const handleSubmit = e => {
     e.preventDefault()
     const value = e.target.elements[0].value
-    console.log('value: ', value)
     onSubmitUsername(value)
   }
 
   const handleChange = event => {
-    const value = event.target.value
-    const isLowerCase = value.toLowerCase() === value
-    setError(!isLowerCase)
+    setValue(event.target.value.toLowerCase())
   }
 
   return (
     <form onSubmit={handleSubmit}>
       <div>
         <label htmlFor="my-input-text">Username:</label>
-        <input id="my-input-text" type="text" onChange={handleChange} />
-        <div>{error ? 'username should be lowercase' : ''}</div>
+        <input
+          id="my-input-text"
+          type="text"
+          value={value}
+          onChange={handleChange}
+        />
       </div>
-      <button type="submit" disabled={error}>
-        Submit
-      </button>
+      <button type="submit">Submit</button>
     </form>
   )
 }

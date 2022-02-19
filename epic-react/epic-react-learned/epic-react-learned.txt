@@ -172,3 +172,19 @@ fundamentals
 
       event.elements.usernameInputId.value
 
+    controlled vs uncontrolled inputs
+      controlled form inputs
+        React has a state that rules what the input should be
+        You will need to pass a value and an onChange prop to the input to make it work
+
+        for controlled inputs you should also have a default value for the input and not null
+          else you get a warning
+
+      uncontrolled inputs
+        the input works as regular inputs
+        the browser manages the input value, we just query that value and get notified by changes
+          that's why you can only have an onChange prop on the input for this
+
+
+
+
