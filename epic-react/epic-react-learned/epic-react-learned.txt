@@ -185,6 +185,19 @@ fundamentals
         the browser manages the input value, we just query that value and get notified by changes
           that's why you can only have an onChange prop on the input for this
 
+  rendering arrays
+    rendering an array of renderable elements is possible in jsx
+      but they have an implication when those elements in the array change over time
 
+      when you re-render that array with an element added, React doesn't know if you added that element at the start, the middle or the end of the array
+
+        visual example
+
+          initArray = [1,2,3,4,5]
+
+          addedArray = [1,2,3,6,4,5]
+
+          you could know that 6 was added by comparing to the old array but that would be inefficient I think as it will have to go through N elements
+        
 
 
