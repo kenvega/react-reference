@@ -192,14 +192,15 @@ fundamentals
       when you re-render that array with an element added or removed
         React doesn't know if you added/removed that element at the start, middle or end of the array
 
-        visual example
+      it's best explained here https://reactjs.org/docs/reconciliation.html#recursing-on-children
+        where you see that React tries to avoid re-creating a tree of React elements where it can so that it is more efficient
+          but when you change an array of renderable elements adding one at the start
+            React could not notice that it can avoid re-creating some trees of React elements and it mutates most of them instead
+              with keys React knows that elements just "moved" and it doesn't have to re-create them again
 
-          initArray = [1,2,3,4,5]
-
-          addedArray = [1,2,3,6,4,5]
-
-          personal note: I think it doesn't exactly know because to know it would need to compare all elements
-            from the old array to the new array and that could be inefficient
+      also as best practice never use indexes of your arrays as the keys
+        if you use indexes as keys then you will see problems if you array state needs to be reordered
+          
 
         
 
