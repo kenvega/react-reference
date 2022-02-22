@@ -198,10 +198,12 @@ fundamentals
             React could not notice that it can avoid re-creating some trees of React elements and it mutates most of them instead
               with keys React knows that elements just "moved" and it doesn't have to re-create them again
 
+      React doesn't know what caused a particular change in the jsx that you are returning
+        all that it knows is that the jsx was changed and it does a guess based on the changes that you provided
+
       also as best practice never use indexes of your arrays as the keys
         if you use indexes as keys then you will see problems if you array state needs to be reordered
-          
+        in fact using the array indexes is the default mechanism that react has to render arrays and it warns you about it 
 
-        
 
 
