@@ -205,5 +205,22 @@ fundamentals
         if you use indexes as keys then you will see problems if you array state needs to be reordered
         in fact using the array indexes is the default mechanism that react has to render arrays and it warns you about it 
 
+react hooks
 
+  intro
+
+    most common hooks to use
+      React.useState
+      React.useEffect
+      React.useContext
+      React.useRef
+      React.useReducer
+
+    some hooks return a value (like useRef or useContext) while others return a pair of values in an array (like useState, useReducer)
+      some don't return nothing at all (like useEffect)
+
+  useState
+
+    when you call the setState function the component re-renders
+    
 
