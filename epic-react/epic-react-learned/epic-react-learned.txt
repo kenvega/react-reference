@@ -222,5 +222,8 @@ react hooks
   useState
 
     when you call the setState function the component re-renders
-    
+
+  useEffect
+
+    lets you run custom code after React renders or re-renders your component
 
