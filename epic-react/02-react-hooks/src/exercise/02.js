@@ -23,6 +23,7 @@ function Greeting({initialName = ''}) {
   React.useEffect(() => {
     window.localStorage.setItem('name', name)
   }, [name])
+  // extra credit 2: use the dependency array to run the effect only when name state changes
 
   function handleChange(event) {
     setName(event.target.value)

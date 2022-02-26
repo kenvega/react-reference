@@ -238,3 +238,8 @@ react hooks
 
     lets you run custom code after React renders or re-renders your component
 
+    there are many cases where components get re-rendered
+      - parent gets re-rendered
+      - a state changes
+
+      if you need to run your effects only when specific state changes, you can pass those to the dependency arrays of your useEffect hook
