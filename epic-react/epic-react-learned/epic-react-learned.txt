@@ -231,6 +231,9 @@ react hooks
       use
         React.useState(() => someExpensiveComputation())
 
+      note:
+        this is only to avoid expensive computations when setting the initial value of the state that don't need to be recalculated every render
+
   useEffect
 
     lets you run custom code after React renders or re-renders your component
