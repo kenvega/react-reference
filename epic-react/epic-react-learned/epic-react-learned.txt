@@ -223,6 +223,14 @@ react hooks
 
     when you call the setState function the component re-renders
 
+    you can pass a function to useState hook to avoid making a expensive computation every single time
+      and instead just do it in the first time the component is rendered (this sound like useEffect (?))
+
+      instead of using
+        React.useState(someExpensiveComputation())
+      use
+        React.useState(() => someExpensiveComputation())
+
   useEffect
 
     lets you run custom code after React renders or re-renders your component
