@@ -7,23 +7,56 @@ import * as React from 'react'
 //  only the first time but for the other cases what matters is that writing more than reading local storage
 //  defining a function every render it's cheaper than reading local storage on every render
 
-function Greeting({initialName = ''}) {
-  console.log('this prints every time the component renders')
+// function Greeting({initialName = ''}) {
+//   console.log('this prints every time the component renders')
 
-  // extra credit 1: lazy state initializate
-  function getInitialNameValue() {
-    console.log(
-      'this prints every time we set the initial value and read local storage',
-    )
-    return window.localStorage.getItem('name') || initialName
-  }
+//   // extra credit 1: lazy state initializate
+//   function getInitialNameValue() {
+//     console.log(
+//       'this prints every time we set the initial value and read local storage',
+//     )
+//     return window.localStorage.getItem('name') || initialName
+//   }
 
-  const [name, setName] = React.useState(getInitialNameValue)
+//   const [name, setName] = React.useState(getInitialNameValue)
+
+//   React.useEffect(() => {
+//     window.localStorage.setItem('name', name)
+//   }, [name])
+//   // extra credit 2: use the dependency array to run the effect only when name state changes
+
+//   function handleChange(event) {
+//     setName(event.target.value)
+//   }
+
+//   return (
+//     <div>
+//       <form>
+//         <label htmlFor="name">Name: </label>
+//         <input value={name} onChange={handleChange} id="name" />
+//       </form>
+//       {name ? <strong>Hello {name}</strong> : 'Please type your name'}
+//     </div>
+//   )
+// }
+
+// extra credit 3: create a custom hook to handle local storage
+// it has to be general to be reusable
+// because it uses the local storage it needs a key parameter
+function useLocalStorageState(key, defaultValue) {
+  const [state, setState] = React.useState(
+    window.localStorage.getItem(key) || defaultValue,
+  )
 
   React.useEffect(() => {
-    window.localStorage.setItem('name', name)
-  }, [name])
-  // extra credit 2: use the dependency array to run the effect only when name state changes
+    window.localStorage.setItem(key, state)
+  }, [key, state])
+
+  return [state, setState]
+}
+
+function Greeting({initialName = ''}) {
+  const [name, setName] = useLocalStorageState('name', initialName)
 
   function handleChange(event) {
     setName(event.target.value)
