@@ -243,3 +243,8 @@ react hooks
       - a state changes
 
       if you need to run your effects only when specific state changes, you can pass those to the dependency arrays of your useEffect hook
+
+    you should not send objects in the array of dependencies of useEffect hooks
+      because to detect if there was changes between your variables inside the effect and the array of dependencies it React does a shallow comparison
+        so it does something like a triple equals to compare (===)
+          and comparing objects that have exact same keys/values with triple equals never gets true
