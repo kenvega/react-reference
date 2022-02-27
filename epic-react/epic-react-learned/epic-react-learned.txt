@@ -249,6 +249,12 @@ react hooks
         so it does something like a triple equals to compare (===)
           and comparing objects that have exact same keys/values with triple equals never gets true
 
+    main uses for useEffect (handle side effects in your component)
+      - data fetching
+      - setting up a subscription
+      - manually changing the DOM
+      - etc
+
   custom hooks
 
     you can create functions that use react hooks and do general logic with it
