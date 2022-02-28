@@ -43,35 +43,66 @@ import * as React from 'react'
 // extra credit 3: create a custom hook to handle local storage
 // it has to be general to be reusable
 // because it uses the local storage it needs a key parameter
-function useLocalStorageState(key, defaultValue) {
-  const [state, setState] = React.useState(
-    window.localStorage.getItem(key) || defaultValue,
-  )
+// function useLocalStorageState(key, defaultValue) {
+//   const [state, setState] = React.useState(
+//     window.localStorage.getItem(key) || defaultValue,
+//   )
 
-  React.useEffect(() => {
-    window.localStorage.setItem(key, state)
-  }, [key, state])
+//   React.useEffect(() => {
+//     window.localStorage.setItem(key, state)
+//   }, [key, state])
 
-  return [state, setState]
-}
+//   return [state, setState]
+// }
 
-function Greeting({initialName = ''}) {
-  const [name, setName] = useLocalStorageState('name', initialName)
+// function Greeting({initialName = ''}) {
+//   const [name, setName] = useLocalStorageState('name', initialName)
 
-  function handleChange(event) {
-    setName(event.target.value)
-  }
+//   function handleChange(event) {
+//     setName(event.target.value)
+//   }
 
-  return (
-    <div>
-      <form>
-        <label htmlFor="name">Name: </label>
-        <input value={name} onChange={handleChange} id="name" />
-      </form>
-      {name ? <strong>Hello {name}</strong> : 'Please type your name'}
-    </div>
-  )
-}
+//   return (
+//     <div>
+//       <form>
+//         <label htmlFor="name">Name: </label>
+//         <input value={name} onChange={handleChange} id="name" />
+//       </form>
+//       {name ? <strong>Hello {name}</strong> : 'Please type your name'}
+//     </div>
+//   )
+// }
+
+// extra credit 4: create a more general custom hook to handle local storage (handle any js data type)
+// function useLocalStorageState(key, defaultValue) {
+//   const [state, setState] = React.useState(
+//     window.localStorage.getItem(key) || defaultValue,
+//   )
+
+//   React.useEffect(() => {
+//     window.localStorage.setItem(key, state)
+//   }, [key, state])
+
+//   return [state, setState]
+// }
+
+// function Greeting({initialName = ''}) {
+//   const [name, setName] = useLocalStorageState('name', initialName)
+
+//   function handleChange(event) {
+//     setName(event.target.value)
+//   }
+
+//   return (
+//     <div>
+//       <form>
+//         <label htmlFor="name">Name: </label>
+//         <input value={name} onChange={handleChange} id="name" />
+//       </form>
+//       {name ? <strong>Hello {name}</strong> : 'Please type your name'}
+//     </div>
+//   )
+// }
 
 function App() {
   return <Greeting />
