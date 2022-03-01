@@ -73,36 +73,39 @@ import * as React from 'react'
 //   )
 // }
 
-// extra credit 4: create a more general custom hook to handle local storage (handle any js data type)
-// function useLocalStorageState(key, defaultValue) {
-//   const [state, setState] = React.useState(
-//     window.localStorage.getItem(key) || defaultValue,
-//   )
+// extra credit 4: create a more flexible custom hook to handle local storage (handle any js data type)
+function useLocalStorageState(key, defaultValue) {
+  // because useEffect does shallow comparison (equivalent to ===)
+  // object data types should go through a JSON.stringify and JSON.parse
 
-//   React.useEffect(() => {
-//     window.localStorage.setItem(key, state)
-//   }, [key, state])
+  const [state, setState] = React.useState(
+    window.localStorage.getItem(key) || defaultValue,
+  )
 
-//   return [state, setState]
-// }
+  React.useEffect(() => {
+    window.localStorage.setItem(key, state)
+  }, [key, state])
 
-// function Greeting({initialName = ''}) {
-//   const [name, setName] = useLocalStorageState('name', initialName)
+  return [state, setState]
+}
 
-//   function handleChange(event) {
-//     setName(event.target.value)
-//   }
+function Greeting({initialName = ''}) {
+  const [name, setName] = useLocalStorageState('name', initialName)
 
-//   return (
-//     <div>
-//       <form>
-//         <label htmlFor="name">Name: </label>
-//         <input value={name} onChange={handleChange} id="name" />
-//       </form>
-//       {name ? <strong>Hello {name}</strong> : 'Please type your name'}
-//     </div>
-//   )
-// }
+  function handleChange(event) {
+    setName(event.target.value)
+  }
+
+  return (
+    <div>
+      <form>
+        <label htmlFor="name">Name: </label>
+        <input value={name} onChange={handleChange} id="name" />
+      </form>
+      {name ? <strong>Hello {name}</strong> : 'Please type your name'}
+    </div>
+  )
+}
 
 function App() {
   return <Greeting />
