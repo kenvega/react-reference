@@ -74,17 +74,26 @@ import * as React from 'react'
 // }
 
 // extra credit 4: create a more flexible custom hook to handle local storage (handle any js data type)
-function useLocalStorageState(key, defaultValue) {
+function useLocalStorageState(
+  key,
+  defaultValue,
+  {serializer = JSON.stringify, deserializer = JSON.parse} = {},
+) {
   // because useEffect does shallow comparison (equivalent to ===)
   // object data types should go through a JSON.stringify and JSON.parse
 
-  const [state, setState] = React.useState(
-    window.localStorage.getItem(key) || defaultValue,
-  )
+  const [state, setState] = React.useState(() => {
+    const localStorageValue = window.localStorage.getItem(key)
+    if (localStorageValue) {
+      return deserializer(localStorageValue)
+    }
+
+    return defaultValue
+  })
 
   React.useEffect(() => {
-    window.localStorage.setItem(key, state)
-  }, [key, state])
+    window.localStorage.setItem(key, serializer(state))
+  }, [key, serializer, state])
 
   return [state, setState]
 }
