@@ -260,4 +260,8 @@ react hooks
     you can create functions that use react hooks and do general logic with it
       e.g. a function that returns react state but also reads and write that state into local storage
              that function is called useLocalStorageState (starting with 'use' to be considered a hook by convention)
-    
+
+  useRef
+
+    it seems that it returns an object that you can mutate without triggering re-renders (unlike useState)
+
