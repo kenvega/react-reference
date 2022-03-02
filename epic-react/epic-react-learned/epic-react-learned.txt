@@ -265,3 +265,53 @@ react hooks
 
     it seems that it returns an object that you can mutate without triggering re-renders (unlike useState)
 
+  hooks flow
+
+    Mount
+
+      this is when the component is first being painted, never being in the page before
+
+      run the lazy initializers
+        this is the function api you pass to the useState
+
+      run the rest of the render function
+
+      udpating the DOM
+        React start setting the divs, etc
+
+      run layout effects
+        like a useEffect callback
+
+      browser paints the screen
+        react stops running and tells the browser to paint the screen with the updated DOM
+
+      run effects
+        update localstorage, etc
+
+      now wait for the user to do interaction so that we get to update
+        some subscription, etc
+
+    Update
+      the lazy initializers are not run again
+
+      run the content of the component function (render)
+
+      react updates the DOM again
+
+      run the cleanup LayoutEffects
+
+      run LayoutEffects
+
+      browser paints the screen
+
+      react cleans any side effects from the last render
+
+      runs the new effects that need to be run in this render
+
+    Unmount
+
+      cleanup of LayoutEffects
+
+      cleanup of Effects
+
+    more info at: https://github.com/donavon/hook-flow

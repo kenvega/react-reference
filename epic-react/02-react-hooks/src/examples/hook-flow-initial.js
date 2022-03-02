@@ -61,31 +61,37 @@ function Child() {
 }
 
 function App() {
-  console.log('App: render start')
+  console.log('%cApp: render start', 'color: MediumSpringGreen')
 
   const [showChild, setShowChild] = React.useState(() => {
-    console.log('App: useState(() => false) - lazy initializer')
+    console.log('%cApp: useState(() => false)', 'color: tomato')
     return false
   })
 
   React.useEffect(() => {
-    console.log('App: useEffect(() => {})')
+    console.log('%cApp: useEffect(() => {})', 'color: LightCoral')
     return () => {
-      console.log('App: useEffect(() => {}) cleanup 🧹')
+      console.log('%cApp: useEffect(() => {}) cleanup 🧹', 'color: LightCoral')
     }
   })
 
   React.useEffect(() => {
-    console.log('App: useEffect(() => {}, [])')
+    console.log('%cApp: useEffect(() => {}, [])', 'color: MediumTurquoise')
     return () => {
-      console.log('App: useEffect(() => {}, []) cleanup 🧹')
+      console.log(
+        '%cApp: useEffect(() => {}, []) cleanup 🧹',
+        'color: MediumTurquoise',
+      )
     }
   }, [])
 
   React.useEffect(() => {
-    console.log('App: useEffect(() => {}, [showChild])')
+    console.log('%cApp: useEffect(() => {}, [showChild])', 'color: HotPink')
     return () => {
-      console.log('App: useEffect(() => {}, [showChild]) cleanup 🧹')
+      console.log(
+        '%cApp: useEffect(() => {}, [showChild]) cleanup 🧹',
+        'color: HotPink',
+      )
     }
   }, [showChild])
 
@@ -113,7 +119,7 @@ function App() {
     </>
   )
 
-  console.log('App: render end')
+  console.log('%cApp: render end', 'color: MediumSpringGreen')
 
   return element
 }
