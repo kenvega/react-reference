@@ -61,15 +61,17 @@ function Child() {
 }
 
 function App() {
-  console.log('App: render start')
+  console.log('01. App Component is running its render function')
 
   const [showChild, setShowChild] = React.useState(() => {
-    console.log('App: useState(() => false) - lazy initializer')
+    console.log(
+      '02. App Component is running lazy initializer - useState(() => false)',
+    )
     return false
   })
 
   React.useEffect(() => {
-    console.log('App: useEffect(() => {})')
+    console.log('App: useEffect(() => {}) asdf ')
     return () => {
       console.log('App: useEffect(() => {}) cleanup 🧹')
     }
@@ -113,7 +115,7 @@ function App() {
     </>
   )
 
-  console.log('App: render end')
+  console.log('03. App Component is finishing rendering')
 
   return element
 }

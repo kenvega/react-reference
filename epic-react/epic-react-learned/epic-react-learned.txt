@@ -255,6 +255,9 @@ react hooks
       - manually changing the DOM
       - etc
 
+    not passing an array of dependencies means that that effect depends on every state and prop change (?)
+
+
   custom hooks
 
     you can create functions that use react hooks and do general logic with it
