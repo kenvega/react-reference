@@ -9,10 +9,12 @@
 import * as React from 'react'
 
 function Child() {
-  console.log('%c    Child: render start', 'color: MediumSpringGreen')
+  console.log('    001. Child Component is running its render function')
 
   const [count, setCount] = React.useState(() => {
-    console.log('%c    Child: useState(() => 0)', 'color: tomato')
+    console.log(
+      '    002. Child Component is running lazy initializer - useState(() => 0)',
+    )
     return 0
   })
 
@@ -55,7 +57,7 @@ function Child() {
     </button>
   )
 
-  console.log('%c    Child: render end', 'color: MediumSpringGreen')
+  console.log('    003. Child component is finishing rendering')
 
   return element
 }
@@ -71,21 +73,27 @@ function App() {
   })
 
   React.useEffect(() => {
-    console.log('App: useEffect(() => {}) asdf ')
+    console.log(
+      '04. App Component runs the first effect in order - useEffect(() => {})',
+    )
     return () => {
       console.log('App: useEffect(() => {}) cleanup 🧹')
     }
   })
 
   React.useEffect(() => {
-    console.log('App: useEffect(() => {}, [])')
+    console.log(
+      '05. App Component runs the second effect in order - useEffect(() => {}, [])',
+    )
     return () => {
       console.log('App: useEffect(() => {}, []) cleanup 🧹')
     }
   }, [])
 
   React.useEffect(() => {
-    console.log('App: useEffect(() => {}, [showChild])')
+    console.log(
+      '06. App Component runs the last effect in order - finishing mounting - useEffect(() => {}, [showChild])',
+    )
     return () => {
       console.log('App: useEffect(() => {}, [showChild]) cleanup 🧹')
     }
