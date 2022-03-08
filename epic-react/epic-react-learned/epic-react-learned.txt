@@ -318,3 +318,8 @@ react hooks
       cleanup of Effects
 
     more info at: https://github.com/donavon/hook-flow
+
+    other notes from this lesson
+      react does not call the React.createElement function until it's actually the time to do the rendering
+        and that means that if you have a component that renders other child components, it will only call them after all the parent component code was run
+    
