@@ -74,7 +74,7 @@ function App() {
 
   React.useEffect(() => {
     console.log(
-      '04. App Component runs the first effect in order - useEffect(() => {})',
+      '04. App Component runs the first effect in the order it was created - useEffect(() => {})',
     )
     return () => {
       console.log('App: useEffect(() => {}) cleanup 🧹')
@@ -83,7 +83,7 @@ function App() {
 
   React.useEffect(() => {
     console.log(
-      '05. App Component runs the second effect in order - useEffect(() => {}, [])',
+      '05. App Component runs the second effect in the order it was created - useEffect(() => {}, [])',
     )
     return () => {
       console.log('App: useEffect(() => {}, []) cleanup 🧹')
@@ -92,7 +92,7 @@ function App() {
 
   React.useEffect(() => {
     console.log(
-      '06. App Component runs the last effect in order - finishing mounting - useEffect(() => {}, [showChild])',
+      '06. App Component runs the last effect in the order it was created - finishing mounting - useEffect(() => {}, [showChild])',
     )
     return () => {
       console.log('App: useEffect(() => {}, [showChild]) cleanup 🧹')
