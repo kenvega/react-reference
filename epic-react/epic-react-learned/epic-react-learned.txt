@@ -325,3 +325,7 @@ react hooks
 
       the effects defined in useEffects in the component run actually after all the code to render the component has run
         meaning that is not exactly that the code of the component necessarily runs all in order as it's written
+
+      when a component is updated and will render a child because of the update
+        you have to take notice that those 2 components will have different hooks flows
+          this is because the parent will go through the updating phase and the child the mounting phase
