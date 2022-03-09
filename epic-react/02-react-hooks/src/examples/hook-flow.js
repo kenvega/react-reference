@@ -8,6 +8,10 @@
 
 import * as React from 'react'
 
+console.log('First. App starts mounting')
+console.log('When you click the checkbox, App will update but Child will mount')
+console.log('=======')
+
 function Child() {
   console.log('    001. Child Component is running its render function')
 

@@ -329,3 +329,8 @@ react hooks
       when a component is updated and will render a child because of the update
         you have to take notice that those 2 components will have different hooks flows
           this is because the parent will go through the updating phase and the child the mounting phase
+
+      when a child component re-renders, the parent component doesn't get updated necessarily
+
+      * i don't have the exact position of logs following the hook flow in the example
+          the cleanup effects are happening before
