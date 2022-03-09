@@ -332,5 +332,7 @@ react hooks
 
       when a child component re-renders, the parent component doesn't get updated necessarily
 
-      * i don't have the exact position of logs following the hook flow in the example
-          the cleanup effects are happening before
+      * (?) I don't have the exact position of logs following the hook flow in the example
+              the cleanup effects are happening before
+
+                React changed this flow a while ago -> https://github.com/kentcdodds/react-hooks/issues/90
