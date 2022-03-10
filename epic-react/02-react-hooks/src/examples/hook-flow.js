@@ -23,7 +23,9 @@ function Child() {
   })
 
   React.useEffect(() => {
-    console.log('%c    Child: useEffect(() => {})', 'color: LightCoral')
+    console.log(
+      '    006. Child component runs their first effect - useEffect(() => {})',
+    )
     return () => {
       console.log(
         '%c    Child: useEffect(() => {}) cleanup 🧹',
@@ -34,8 +36,7 @@ function Child() {
 
   React.useEffect(() => {
     console.log(
-      '%c    Child: useEffect(() => {}, [])',
-      'color: MediumTurquoise',
+      '    007. Child component runs their second effect - useEffect(() => {}, [])',
     )
     return () => {
       console.log(
@@ -81,7 +82,9 @@ function App() {
       '04. App Component runs the first effect in the order it was created - useEffect(() => {})',
     )
     return () => {
-      console.log('App: useEffect(() => {}) cleanup 🧹')
+      console.log(
+        '004. App component cleans their effect - useEffect(() => {})',
+      )
     }
   })
 
@@ -99,7 +102,9 @@ function App() {
       '06. App Component runs the last effect in the order it was created - finishing mounting - useEffect(() => {}, [showChild])',
     )
     return () => {
-      console.log('App: useEffect(() => {}, [showChild]) cleanup 🧹')
+      console.log(
+        '005. App component cleans their other effect - useEffect(() => {}, [showChild])',
+      )
     }
   }, [showChild])
 
