@@ -336,3 +336,5 @@ react hooks
               the cleanup effects are happening before
 
                 React changed this flow a while ago -> https://github.com/kentcdodds/react-hooks/issues/90
+
+                  but Kent mentions that in the real world it won't affect much what we do in day to day
