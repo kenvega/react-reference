@@ -319,7 +319,7 @@ react hooks
 
     more info at: https://github.com/donavon/hook-flow
 
-    other notes from this lesson
+    other notes from hooks flow
       react does not call the React.createElement function until it's actually the time to do the rendering
         and that means that if you have a component that renders other child components, it will only call them after all the parent component code was run
 
@@ -338,3 +338,8 @@ react hooks
                 React changed this flow a while ago -> https://github.com/kentcdodds/react-hooks/issues/90
 
                   but Kent mentions that in the real world it won't affect much what we do in day to day
+
+  lifting state
+
+    to share state between sibling components, put the state on the least common parent
+      and then pass it down
