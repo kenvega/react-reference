@@ -349,8 +349,19 @@ react hooks
         https://kentcdodds.com/blog/state-colocation-will-make-your-react-app-faster
         https://kentcdodds.com/blog/colocation
 
-
       colocation
+        basically it's the idea of having concepts that are related in near files instead of separated ones
+          the benefit is in general that the code becomes more maintainable and easier to navigate
+
+          examples
+            comments near the code
+            tests files near the component files
+            css files near the component files (or even in the component file itself)
+
+            for React state, the state management should be as near as possible to the UI that it's using it
+              this also helps re-rendering less components when your state changes
+              this is called localizing your state
+
 
       created codesandbox example
         https://codesandbox.io/s/state-colocation-example-k05qq3?file=/src/App.js:726-999
