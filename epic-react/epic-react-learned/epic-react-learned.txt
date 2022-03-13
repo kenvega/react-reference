@@ -362,6 +362,17 @@ react hooks
               this also helps re-rendering less components when your state changes
               this is called localizing your state
 
+      colocating state
+        when you have your state in higher up components (more like global state)
+          React will have to re-render all the component tree if a state changes because it doesn't know exactly what changed
+            and if some of those components in the tree are slow to render then all your app will have a slow render
+
+        instead if you colocate your state near where it's needed (probably inside your children components)
+          React will re-render only what it's needed making the re-render process faster avoiding to re-render other components
+
+        * remember that when a state changes that invalidates the React tree and React re-renders all of that again
+
+
 
       created codesandbox example
         https://codesandbox.io/s/state-colocation-example-k05qq3?file=/src/App.js:726-999
