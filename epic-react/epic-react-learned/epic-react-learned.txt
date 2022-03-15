@@ -341,8 +341,9 @@ react hooks
 
   lifting state
 
-    to share state between sibling components, put the state on the least common parent
-      and then pass it down
+    to share state between sibling components
+      put the state on the least common parent higher up in the component tree
+        and then pass it down as props
 
     state colocation
       sources:
