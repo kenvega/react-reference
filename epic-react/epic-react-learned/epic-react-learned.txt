@@ -375,6 +375,8 @@ react hooks
 
         * remember that when a state changes that invalidates the React tree and React re-renders all of that again
 
+        personal note: the example used in the extra credit could probably be easily noted when you have a lint rule that makes sure that you use all props you pass
+            or maybe it is proptypes set or typescript
 
 
       created codesandbox example
