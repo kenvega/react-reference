@@ -370,6 +370,8 @@ react hooks
         instead if you colocate your state near where it's needed (probably inside your children components)
           React will re-render only what it's needed making the re-render process faster avoiding to re-render other components
 
+        in summary, having state as close as possible to where it is relevant helps with perspective on the code and performance
+
         * remember that when a state changes that invalidates the React tree and React re-renders all of that again
 
 
@@ -377,3 +379,5 @@ react hooks
       created codesandbox example
         https://codesandbox.io/s/state-colocation-example-k05qq3?file=/src/App.js:726-999
 
+        you can also see this one that has a lot more things that are needed to be rendered instead of a simple while loop
+          https://codesandbox.io/s/colocate-state-ts1x9
