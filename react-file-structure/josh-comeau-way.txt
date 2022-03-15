@@ -1,0 +1,6 @@
+source https://www.joshwcomeau.com/react/file-structure/
+
+some rules
+
+  doesn't call components index.js files inside the component folder name
+    because then all files called like that occupy more space in the tab when opened
