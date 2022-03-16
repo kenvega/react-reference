@@ -1,0 +1,5 @@
+source: https://epicreact.dev/one-react-mistake-thats-slowing-you-down/
+
+  the way we compose our UI elements is most likely what makes them more or less maintanable
+
+  WIP
