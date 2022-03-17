@@ -2,4 +2,6 @@ source: https://epicreact.dev/one-react-mistake-thats-slowing-you-down/
 
   the way we compose our UI elements is most likely what makes them more or less maintanable
 
+  to avoid prop drilling when making your UI you can use React composition model
+
   WIP
