@@ -4,4 +4,5 @@ source: https://epicreact.dev/one-react-mistake-thats-slowing-you-down/
 
   to avoid prop drilling when making your UI you can use React composition model
 
-  WIP
+  use it with moderation and you can avoid passing too quickly from `passing props` to using `context`
+
