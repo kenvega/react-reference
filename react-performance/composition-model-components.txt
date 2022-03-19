@@ -12,3 +12,4 @@ source: https://epicreact.dev/one-react-mistake-thats-slowing-you-down/
 memoization (move to other file probably) 
  source: https://epicreact.dev/memoization-and-react
 
+  memoization is caching. remember the input and relates output. also return same output if same input is given
