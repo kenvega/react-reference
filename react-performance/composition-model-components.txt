@@ -7,3 +7,8 @@ source: https://epicreact.dev/one-react-mistake-thats-slowing-you-down/
   use it with moderation and you can avoid passing too quickly from `passing props` to using `context`
 
   added example of how it works here: https://codesandbox.io/s/react-app-composition-model-92gpfc
+
+
+memoization (move to other file probably) 
+ source: https://epicreact.dev/memoization-and-react
+
