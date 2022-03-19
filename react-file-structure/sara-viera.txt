@@ -1,0 +1,40 @@
+Sara Viera from Codesandbox
+
+├── src
+├── index.js
+├── components/
+├──── button/
+├────── index.js
+├────── elements.(js/css)
+├── pages/
+├──── homepage/
+├──── screens/
+├────── hero/
+├────── index.js
+├────── elements.(js/css)
+├──── index.js
+├──── elements.(js/css)
+├── index.js
+├── utils/
+├──── date.js
+├── assets/
+├──── icons/
+└──── images/
+
+
+components
+  - here only components that have been used more than in one page or module
+  - usually don't belong to the design system (?) like a `SaveButton` (modified basic button)
+  - if you have no system design, then all components used more than once should be here
+
+pages
+  - index will be imported here by the route file (?)
+  - pages can have sections that won't be reused but is best to separate them (for order), in that case create sub folders (like hero)
+
+assets
+  - images and icons
+
+utils
+  - overly complicated functions here like formatting/transforming dates.
+  - heavy functions in general
+  - you can have also a file here related only for date functions
