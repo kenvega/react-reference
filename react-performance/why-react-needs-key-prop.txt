@@ -2,7 +2,8 @@ source: https://kentcdodds.com/blog/understanding-reacts-key-prop
 
 why react key prop is needed
 
-  ...
+  side note:
+    it can also be a useful mechanism for controlling React component and element instances.
 
   example of codesandbox
 
