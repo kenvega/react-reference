@@ -1,0 +1,10 @@
+source: https://kentcdodds.com/blog/understanding-reacts-key-prop
+
+why react key prop is needed
+
+  ...
+
+  example of codesandbox
+
+    https://codesandbox.io/s/react-understanding-key-prop-73lx1t
+
