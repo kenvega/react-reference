@@ -1,0 +1,14 @@
+source: https://blog.fildon.me/what-is-memoization
+
+what is memoization
+
+  process of remembering previous results computations to be reused in the future
+
+  e.g. 20 * 42 = 840 -> save this result so we don't calculate it again later when asked again
+
+what should not be memoized?
+
+  - cheap functions that don't require a lot of computation
+  - functions that don't always return the same results given the same inputs (non-deterministic functions)
+  - time dependent functions
+  
