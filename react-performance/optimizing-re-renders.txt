@@ -1,0 +1,11 @@
+source: https://kentcdodds.com/blog/optimize-react-re-renders
+
+If you give React the same element you gave it on the last render, it won't need to re-render it.
+
+When a state changes in your component, it will re-render it.
+
+But if your component have other child components that are static and don't change because of part of your state
+  then you can extract that part and avoid re-render it
+
+  like in this codesandbox: https://codesandbox.io/s/react-optimizing-re-renders-r5c7p5
+
