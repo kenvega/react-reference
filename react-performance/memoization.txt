@@ -10,5 +10,18 @@ what should not be memoized?
 
   - cheap functions that don't require a lot of computation
   - functions that don't always return the same results given the same inputs (non-deterministic functions)
+  - side effects because they still have to be done again regardless of the previous result
   - time dependent functions
-  
+
+  after that you should probably just have pure functions which will return the same output given the same input
+
+the pseudocode for memoization
+
+  - Receive the input
+
+  - Check if this input has been seen before
+
+  - If it was: return the result
+
+  - If it wasn't: compute the result, store it along with the input. Return the result.
+
