@@ -1,0 +1,7 @@
+source: https://kentcdodds.com/blog/usememo-and-usecallback
+
+using useCallback not always is going to have better performance
+  it is said to be demonstrated in one example in the blog post (I cannot test it yet because i'm not sure how) (TODO:)
+
+
+TODO: needs to define how to use useCallback
