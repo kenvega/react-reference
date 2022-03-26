@@ -27,3 +27,10 @@ the pseudocode for memoization
 
 source: https://epicreact.dev/memoization-and-react/
 
+why to memoize
+
+  improve performance by avoiding expensive computations
+    e.g. re-rendering expensive components or calling expensive functions
+
+  value stability
+
