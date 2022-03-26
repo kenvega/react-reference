@@ -24,3 +24,6 @@ the pseudocode for memoization
   - If it was: return the result
 
   - If it wasn't: compute the result, store it along with the input. Return the result.
+
+source: https://epicreact.dev/memoization-and-react/
+
