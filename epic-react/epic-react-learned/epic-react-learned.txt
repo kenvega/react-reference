@@ -384,3 +384,10 @@ react hooks
 
         you can also see this one that has a lot more things that are needed to be rendered instead of a simple while loop
           https://codesandbox.io/s/colocate-state-ts1x9
+
+  tic tac toe exercise with useState
+
+    managed state: state that you explicitly need
+    derived state: state that you can calculate based on other state
+  
+    
