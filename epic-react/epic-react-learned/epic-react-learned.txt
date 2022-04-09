@@ -389,5 +389,7 @@ react hooks
 
     managed state: state that you explicitly need
     derived state: state that you can calculate based on other state
-  
-    
+
+    in React you don't want to mutate your React state because that will lead to bugs hard to track down
+      instead copy your state and mutate that copy then use the corresponding set function to replace the state
+        for copying you probably will need to use spread/rest operator
