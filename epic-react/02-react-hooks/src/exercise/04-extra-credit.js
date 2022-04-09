@@ -1,5 +1,6 @@
 // useState: tic tac toe
 // http://localhost:3000/isolated/exercise/04.js
+// have game history
 
 import * as React from 'react'
 import { useLocalStorageState } from '../utils'

@@ -393,3 +393,14 @@ react hooks
     in React you don't want to mutate your React state because that will lead to bugs hard to track down
       instead copy your state and mutate that copy then use the corresponding set function to replace the state
         for copying you probably will need to use spread/rest operator
+
+    when using localStorage to get items remember they are always returned as a string so you might need to use JSON.parse
+      as well as JSON.stringify when saving them to localStorage
+
+    optimizing solution
+      because we are json parsing something that we read from localstorage on every update of the state this might be not the most efficient
+        so that's why we use lazy loading on useState (using a function that returns a value)
+
+      for the useEffect you only need to run it when the squares state is updated so we set that in the dependencies array
+
+    Kent prefers to have the UI setup before adding interactivity
