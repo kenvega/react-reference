@@ -1,0 +1,19 @@
+* based for react version >= 16.4
+
+2 main phases
+
+  render phase
+    pure (?)
+    no side effects
+    may be paused, restarted or aborted by react
+
+  pre-commit phase
+    * for less common lifecycles
+
+  commit phase
+
+
+
+
+source:
+  https://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/

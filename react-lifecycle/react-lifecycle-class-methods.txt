@@ -1,0 +1,128 @@
+render()
+
+  the only required method for the component
+
+  should be a pure function, meaning that
+    it is not allowed to change component state
+    returns the same result each time it is invoked
+    does not directly interact with the browser (to interact, use another lifecycle method like componentDidMount)
+
+  will not called if shouldComponentUpdate() returns false
+
+  what does when it is called
+    checks on this.props and this.state
+
+    returns one of these types
+
+      react elements
+        the ones created with JSX like <div /> or  <MyComponent /> which will render a DOM node
+
+      arrays and fragments
+        multiple elements
+
+      portals
+        to allow you render children into a different DOM subtree
+        learn more about portals at https://reactjs.org/docs/portals.html
+
+      string and numbers
+        rendered as text nodes in DOM
+
+      booleans or null
+        to support this pattern
+          return (test && <Child />) // where test is boolean
+
+
+constructor(props)
+
+  typically called for
+    initialize local state by assigning objects to this.state like this
+      this.state = { counter: 0 }; // constructor it's the only one where you assign state directly, everywhere else use setState()
+    binding event handler methods to an instance
+
+  for class components: if you don't initialize state nor bind methods you don't need to implement this function
+
+  called before the component is mounted
+
+  when implemented, you should call super(props)
+    if you don't do it, this.props will be undefined in the constructor function
+
+  don't introduce side effects or subscriptions in the constructor, use componentDidMount() instead
+
+  common mistake is to assign props to the state here
+    unnecesary because you can access your props directly (e.g. this.props.color)
+    lead to bugs because when assigning props to state won't automatically update the state if your prop changes
+    learn more about this at https://reactjs.org/blog/2018/06/07/you-probably-dont-need-derived-state.html
+
+
+componentDidMount
+
+  called after component is mounted (inserted into the tree)
+
+  what should go here
+    any initialization that requires DOM nodes
+    any instantiation of network request to load data
+    subscriptions setup (don't forget to unsubscribe at componentWillUnmount)
+
+  you can call setState here
+    it will trigger an extra rendering but before the browser updates the screen (?)
+      so render() will be called twice but the user won't see intermediate state (?)
+
+    in most cases you should assign initial state at the constructor method instead
+
+    but you can use setState here when you need a DOM node size or position to know how to render (like modals or tooltips)
+
+
+componentDidUpdate
+
+  called after updating occurs. not called on first render
+
+  it's an opportunity to change the DOM when the component has been updated
+
+  a good place to do network requests
+    but you might prefer to check first if previous props are different with current props
+      because if props didn't change probably you might not need to do a network request
+
+      example
+        componentDidUpdate(prevProps) {
+          // Typical usage (don't forget to compare props):
+          if (this.props.userID !== prevProps.userID) {
+            this.fetchData(this.props.userID);
+          }
+        }
+
+  you can call setState here
+    but it must be wrapped in a condition always otherwise you'll get in an infinite loop
+
+  try not to sync/mirro prop values to your current state and use props directly
+    more info at https://reactjs.org/blog/2018/06/07/you-probably-dont-need-derived-state.html
+
+  if your component implements the lifecyle method getSnapshotBeforeUpdate()
+    the value returned from that method will be passed as the thrid parameter to the componentDidUpdate method
+      else this third parameter is undefined
+
+  componentDidUpdate won't be invoked if shouldComponentUpdate() retuns false
+
+
+componentWillUnmount()
+
+  invoked inmediately before component is unmounted and destroyed
+
+  what to do here
+    cleanups
+      invalidating timers
+      cancelling network requests
+      cleaning subscriptions created in componentDidMount
+
+  you should not call setState here
+    because the component is not going to be re-rendered again
+      instances of a components that are unmounted are never going to be mounted again (notice that we refer to instances)
+
+
+
+
+
+
+sources
+  https://reactjs.org/docs/react-component.html#commonly-used-lifecycle-methods
+  https://reactjs.org/docs/react-component.html#rarely-used-lifecycle-methods
+  https://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/
