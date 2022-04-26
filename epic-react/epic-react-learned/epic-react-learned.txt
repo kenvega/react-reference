@@ -1,3 +1,8 @@
+parts that I didn't understand yet very well
+  search for '(?)' in this file
+
+  - lazy loading in useState
+
 fundamentals
 
   how do you manage DOM nodes using javascript?
@@ -223,7 +228,7 @@ react hooks
 
     when you call the setState function the component re-renders
 
-    you can pass a function to useState hook to avoid making a expensive computation every single time
+    you can pass a function to useState hook to avoid making a expensive computation every single time (?)
       and instead just do it in the first time the component is rendered (this sound like useEffect (?))
 
       instead of using
