@@ -20,7 +20,13 @@ function Game() {
 const initialSquares = Array(9).fill(null)
 
 function Board() {
-  const [squares, setSquares] = React.useState(initialSquares)
+  const [squares, setSquares] = React.useState(
+    () => JSON.parse(window.localStorage.getItem('squares')) || initialSquares,
+  )
+
+  React.useEffect(() => {
+    window.localStorage.setItem('squares', JSON.stringify(squares))
+  }, [squares])
 
   const nextValue = calculateNextValue(squares) // returns 'X' or 'O'
   const winner = calculateWinner(squares) // returns 'X', 'O', or null

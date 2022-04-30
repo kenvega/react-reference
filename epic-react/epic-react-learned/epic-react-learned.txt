@@ -1,8 +1,6 @@
 parts that I didn't understand yet very well
   search for '(?)' in this file
 
-  - lazy loading in useState
-
 fundamentals
 
   how do you manage DOM nodes using javascript?
@@ -228,16 +226,34 @@ react hooks
 
     when you call the setState function the component re-renders
 
-    you can pass a function to useState hook to avoid making a expensive computation every single time (?)
-      and instead just do it in the first time the component is rendered (this sound like useEffect (?))
+    lazy initialization with useState
+      useful when having an initial state value that
+        is expensive to compute or
+        it needs to do some I/O operation like reading from localstorage
 
-      instead of using
-        React.useState(someExpensiveComputation())
-      use
-        React.useState(() => someExpensiveComputation())
+      lazy initialization allows you to set that expensive computation or I/O inside a created function
+        so that this function is only called when you actually need it
+          which is in the first render
+
+      useful because the value you pass to the useState is important for the initial component's render
+        but then ignored for the next renders
+
+      e.g.
+        instead of this
+          const initialState = Number(window.localStorage.getItem('count'))
+          const [count, setCount] = React.useState(initialState) // will read from localstorage every render
+
+        do this
+          const getInitialState = () => Number(window.localStorage.getItem('count'))
+          const [count, setCount] = React.useState(getInitialState) // will read from localstorage only in first render
+
+      more details at: https://kentcdodds.com/blog/use-state-lazy-initialization-and-function-updates
 
       note:
-        this is only to avoid expensive computations when setting the initial value of the state that don't need to be recalculated every render
+        this is only to avoid redoing expensive computations when setting the initial value of the state that don't need to be recalculated every render
+        at first this seemed very similar to useEffect(()=>{},[]) to avoid redoing computations. But it seems it would take more renders for this
+          because you will need to set the initial state with something dummy and then change it with useState triggering a re-render
+          but I have to test, ask to be sure what else could be wrong with this approach (?)
 
   useEffect
 
