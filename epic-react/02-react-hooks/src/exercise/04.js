@@ -3,6 +3,8 @@
 
 import * as React from 'react'
 
+import {useLocalStorageState} from '../utils'
+
 function App() {
   return <Game />
 }
@@ -20,14 +22,7 @@ function Game() {
 const initialSquares = Array(9).fill(null)
 
 function Board() {
-  // lazy initialization of state to avoid reading from local storage on every render
-  const [squares, setSquares] = React.useState(
-    () => JSON.parse(window.localStorage.getItem('squares')) || initialSquares,
-  )
-
-  React.useEffect(() => {
-    window.localStorage.setItem('squares', JSON.stringify(squares))
-  }, [squares])
+  const [squares, setSquares] = useLocalStorageState('squares', initialSquares)
 
   const nextValue = calculateNextValue(squares) // returns 'X' or 'O'
   const winner = calculateWinner(squares) // returns 'X', 'O', or null
