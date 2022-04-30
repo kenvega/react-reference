@@ -20,6 +20,7 @@ function Game() {
 const initialSquares = Array(9).fill(null)
 
 function Board() {
+  // lazy initialization of state to avoid reading from local storage on every render
   const [squares, setSquares] = React.useState(
     () => JSON.parse(window.localStorage.getItem('squares')) || initialSquares,
   )
