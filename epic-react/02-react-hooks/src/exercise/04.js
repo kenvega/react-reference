@@ -5,33 +5,35 @@ import * as React from 'react'
 
 import {useLocalStorageState} from '../utils'
 
+const initialSquares = Array(9).fill(null)
+
 function App() {
   return <Game />
 }
 
 function Game() {
-  return (
-    <div className="game">
-      <div className="game-board">
-        <Board />
-      </div>
-    </div>
+  const [currentStep, setCurrentStep] = useLocalStorageState(
+    'tic-tac-toe:current-step',
+    [initialSquares],
   )
-}
+  const [history, setHistory] = useLocalStorageState('tic-tac-toe:history', [
+    initialSquares,
+  ]) // will have all steps with squares values
 
-const initialSquares = Array(9).fill(null)
+  const currentSquares = history[currentStep]
 
-function Board() {
-  const [squares, setSquares] = useLocalStorageState('squares', initialSquares)
-
-  const nextValue = calculateNextValue(squares) // returns 'X' or 'O'
-  const winner = calculateWinner(squares) // returns 'X', 'O', or null
-  const status = calculateStatus(winner, squares, nextValue) // returns `Winner: ${winner}`, `Scratch: Cat's game`, or `Next player: ${nextValue}`
+  const nextValue = calculateNextValue(currentSquares) // returns 'X' or 'O'
+  const winner = calculateWinner(currentSquares) // returns 'X', 'O', or null
+  const status = calculateStatus(winner, currentSquares, nextValue) // returns `Winner: ${winner}`, `Scratch: Cat's game`, or `Next player: ${nextValue}`
 
   // squareIndex goes from 0 to 8. center square is index 4
   function selectSquare(squareIndex) {
     // return early if square already clicked
-    if (squares[squareIndex] === 'X' || squares[squareIndex] === 'O') return
+    if (
+      currentSquares[squareIndex] === 'X' ||
+      currentSquares[squareIndex] === 'O'
+    )
+      return
 
     // return early if there is already a winner
     if (winner) return
@@ -39,18 +41,54 @@ function Board() {
     // never mutate/directly change state in React - no assignation for state
     // use instead the setter functions else you will have hard bugs to track
     // better to copy state when it is array, object, etc before changing it
-    const squaresCopy = [...squares]
+    const newHistory = history.slice(0, currentStep + 1) // new copied value from state to avoid mutating it
+
+    const squaresCopy = [...currentSquares]
     squaresCopy[squareIndex] = nextValue
-    setSquares(squaresCopy)
+
+    setHistory([...newHistory, squaresCopy])
+    setCurrentStep(newHistory.length)
   }
 
   function restart() {
-    setSquares(initialSquares)
+    setHistory([initialSquares])
+    setCurrentStep(0)
   }
 
+  const moves = history.map((stepSquares, step) => {
+    const desc = step === 0 ? 'Go to game start' : `Go to move #${step}`
+
+    const isCurrentStep = step === currentStep
+
+    return (
+      <li key={step}>
+        <button disabled={isCurrentStep} onClick={() => setCurrentStep(step)}>
+          {desc} {isCurrentStep ? '(current)' : ''}
+        </button>
+      </li>
+    )
+  })
+
+  return (
+    <div className="game">
+      <div className="game-board">
+        <Board onClick={selectSquare} squares={currentSquares} />
+        <button className="restart" onClick={restart}>
+          restart
+        </button>
+      </div>
+      <div className="game-info">
+        <div>{status}</div>
+        <ol>{moves}</ol>
+      </div>
+    </div>
+  )
+}
+
+function Board({onClick, squares}) {
   function renderSquare(i) {
     return (
-      <button className="square" onClick={() => selectSquare(i)}>
+      <button className="square" onClick={() => onClick(i)}>
         {squares[i]}
       </button>
     )
@@ -58,7 +96,6 @@ function Board() {
 
   return (
     <div>
-      <div className="status">{status}</div>
       <div className="board-row">
         {renderSquare(0)}
         {renderSquare(1)}
@@ -74,9 +111,6 @@ function Board() {
         {renderSquare(7)}
         {renderSquare(8)}
       </div>
-      <button className="restart" onClick={restart}>
-        restart
-      </button>
     </div>
   )
 }

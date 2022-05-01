@@ -1,31 +1,47 @@
 // useState: tic tac toe
 // http://localhost:3000/isolated/exercise/04.js
-// have game history
+// this is the solution for extra credits before the change of history navigation
 
 import * as React from 'react'
-import { useLocalStorageState } from '../utils'
+
+import {useLocalStorageState} from '../utils'
+
+function App() {
+  return <Game />
+}
+
+function Game() {
+  return (
+    <div className="game">
+      <div className="game-board">
+        <Board />
+      </div>
+    </div>
+  )
+}
 
 const initialSquares = Array(9).fill(null)
 
 function Board() {
-  // const [squares, setSquares] = React.useState(JSON.parse(window.localStorage.getItem('squares')) || initialSquares)
-  // using localstorage hook
   const [squares, setSquares] = useLocalStorageState('squares', initialSquares)
 
-  React.useEffect(() => {
-    window.localStorage.setItem('squares', JSON.stringify(squares))
-  }, [squares])
+  const nextValue = calculateNextValue(squares) // returns 'X' or 'O'
+  const winner = calculateWinner(squares) // returns 'X', 'O', or null
+  const status = calculateStatus(winner, squares, nextValue) // returns `Winner: ${winner}`, `Scratch: Cat's game`, or `Next player: ${nextValue}`
 
-  const nextPlayer = calculateNextPlayer(squares) // ('X' or 'O')
-  const winner = calculateWinner(squares) // ('X', 'O', or null)
-  const status  = calculateStatus(winner, squares, nextPlayer) // (`Winner: ${winner}`, `Scratch: Cat's game`, or `Next player: ${nextPlayer}`)
+  // squareIndex goes from 0 to 8. center square is index 4
+  function selectSquare(squareIndex) {
+    // return early if square already clicked
+    if (squares[squareIndex] === 'X' || squares[squareIndex] === 'O') return
 
-  function handleClickOnSquare(squareIndex) {
-    if (winner || squares[squareIndex]) {
-      return
-    }
+    // return early if there is already a winner
+    if (winner) return
+
+    // never mutate/directly change state in React - no assignation for state
+    // use instead the setter functions else you will have hard bugs to track
+    // better to copy state when it is array, object, etc before changing it
     const squaresCopy = [...squares]
-    squaresCopy[squareIndex] = nextPlayer
+    squaresCopy[squareIndex] = nextValue
     setSquares(squaresCopy)
   }
 
@@ -35,7 +51,7 @@ function Board() {
 
   function renderSquare(i) {
     return (
-      <button className="square" onClick={() => handleClickOnSquare(i)}>
+      <button className="square" onClick={() => selectSquare(i)}>
         {squares[i]}
       </button>
     )
@@ -66,15 +82,9 @@ function Board() {
   )
 }
 
-function Game() {
-  return (
-    <div className="game">
-      <div className="game-board">
-        <Board />
-      </div>
-    </div>
-  )
-}
+// --------––-------------
+// HELPER FUNCTIONS TO USE
+// --------––-------------
 
 function calculateStatus(winner, squares, nextValue) {
   return winner
@@ -84,7 +94,7 @@ function calculateStatus(winner, squares, nextValue) {
     : `Next player: ${nextValue}`
 }
 
-function calculateNextPlayer(squares) {
+function calculateNextValue(squares) {
   return squares.filter(Boolean).length % 2 === 0 ? 'X' : 'O'
 }
 
@@ -106,10 +116,6 @@ function calculateWinner(squares) {
     }
   }
   return null
-}
-
-function App() {
-  return <Game />
 }
 
 export default App
