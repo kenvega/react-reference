@@ -441,3 +441,14 @@ react hooks
             so in general if you can avoid that in the render that's what you should avoid
 
       source: not exactly sure... what i've been seing from react course or blogs from kentcdodds
+
+  useRef and useEffect: DOM interaction
+
+    remember that your React components just create and return React elements with no real relation to the DOM
+      you don't exactly have access to the DOM with jsx like <div>Hello</div> that gets converted to React.createElement
+
+    DOM nodes are created once the ReactDOM.render function is run
+
+    we don't call document.createElement, that is what React does
+      so if we need a specific DOM node, we have to ask it to React
+        one way is to use a ref
