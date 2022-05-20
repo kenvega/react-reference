@@ -32,7 +32,12 @@ function App() {
         {/* you can reset the error state in ErrorBoundary adding a key prop to the component */}
         {/* this unmounts and re-mounts the component that's why the error state is reset */}
         {/* but the key prop remounts the components inside too. So it's better handled with the onReset prop */}
-        <ErrorBoundary FallbackComponent={ErrorFallback} onReset={handleReset}>
+        {/* react-error-boundary also has resetKeys to reset its state when keys changes ONLY IF there is an error*/}
+        <ErrorBoundary
+          FallbackComponent={ErrorFallback}
+          onReset={handleReset}
+          resetKeys={[pokemonName]}
+        >
           {/* when there is an error in PokemonInfo it will search for the nearest ErrorBoundary */}
           <PokemonInfo pokemonName={pokemonName} />
         </ErrorBoundary>
