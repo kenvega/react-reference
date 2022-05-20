@@ -1,13 +1,31 @@
 // useEffect: HTTP requests
 // http://localhost:3000/isolated/exercise/06.js
 
-import {useState, useEffect} from 'react'
+import React, {useState, useEffect} from 'react'
 import {
   fetchPokemon, // the function we call to get the pokemon info
   PokemonInfoFallback, // the thing we show while we're loading the pokemon info
   PokemonDataView, // the stuff we use to display the pokemon info
   PokemonForm,
 } from '../pokemon'
+
+// generic ErrorBoundary component that can render different fallback components
+// to show when an error happens making it more flexible to use
+class ErrorBoundary extends React.Component {
+  state = {error: null}
+
+  static getDerivedStateFromError(error) {
+    return {error}
+  }
+  render() {
+    const {error} = this.state
+    if (error) {
+      return <this.props.FallbackComponent error={error} />
+    }
+    console.log('ErrorBoundary', this.state.error)
+    return this.props.children
+  }
+}
 
 function App() {
   const [pokemonName, setPokemonName] = useState('')
@@ -21,17 +39,24 @@ function App() {
       <PokemonForm pokemonName={pokemonName} onSubmit={handleSubmit} />
       <hr />
       <div className="pokemon-info">
-        <PokemonInfo pokemonName={pokemonName} />
+        <ErrorBoundary FallbackComponent={ErrorFallback}>
+          <PokemonInfo pokemonName={pokemonName} />
+        </ErrorBoundary>
       </div>
     </div>
   )
 }
 
-function PokemonInfo({pokemonName}) {
-  // const [status, setStatus] = useState('idle')
-  // const [pokemon, setPokemon] = useState(null)
-  // const [error, setError] = useState(null)
+function ErrorFallback({error}) {
+  return (
+    <div>
+      There was an error:{' '}
+      <pre style={{whiteSpace: 'normal'}}>{error.message}</pre>
+    </div>
+  )
+}
 
+function PokemonInfo({pokemonName}) {
   const [state, setState] = useState({
     status: 'idle',
     pokemon: null,
@@ -67,12 +92,8 @@ function PokemonInfo({pokemonName}) {
     return <PokemonInfoFallback name={pokemonName} />
   } else if (status === 'rejected') {
     // error on request
-    return (
-      <div role="alert">
-        There was an error:{' '}
-        <pre style={{whiteSpace: 'normal'}}>{error.message}</pre>
-      </div>
-    )
+    // will be handled by the error boundary
+    throw error
   } else if (status === 'resolved') {
     // succesful request
     return <PokemonDataView pokemon={pokemon} />
