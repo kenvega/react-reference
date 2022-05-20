@@ -2,30 +2,13 @@
 // http://localhost:3000/isolated/exercise/06.js
 
 import React, {useState, useEffect} from 'react'
+import {ErrorBoundary} from 'react-error-boundary' // to avoid having to write the class based component
 import {
   fetchPokemon, // the function we call to get the pokemon info
   PokemonInfoFallback, // the thing we show while we're loading the pokemon info
   PokemonDataView, // the stuff we use to display the pokemon info
   PokemonForm,
 } from '../pokemon'
-
-// generic ErrorBoundary component that can render different fallback components
-// to show when an error happens making it more flexible to use
-class ErrorBoundary extends React.Component {
-  state = {error: null}
-
-  static getDerivedStateFromError(error) {
-    return {error}
-  }
-  render() {
-    const {error} = this.state
-    if (error) {
-      return <this.props.FallbackComponent error={error} />
-    }
-    console.log('ErrorBoundary', this.state.error)
-    return this.props.children
-  }
-}
 
 function App() {
   const [pokemonName, setPokemonName] = useState('')
