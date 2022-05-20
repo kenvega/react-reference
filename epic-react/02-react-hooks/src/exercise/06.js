@@ -28,23 +28,32 @@ function App() {
 }
 
 function PokemonInfo({pokemonName}) {
-  const [status, setStatus] = useState('idle')
-  const [pokemon, setPokemon] = useState(null)
-  const [error, setError] = useState(null)
+  // const [status, setStatus] = useState('idle')
+  // const [pokemon, setPokemon] = useState(null)
+  // const [error, setError] = useState(null)
+
+  const [state, setState] = useState({
+    status: 'idle',
+    pokemon: null,
+    error: null,
+  })
+
+  const {status, pokemon, error} = state
+  console.log('state: ', state)
 
   useEffect(() => {
     if (!pokemonName) return
 
-    setStatus('pending')
+    setState({status: 'pending'})
 
     fetchPokemon(pokemonName)
       .then(pokemonData => {
-        setPokemon(pokemonData)
-        setStatus('resolved')
+        // setting a state avoids making sure and order for setState call functions is made
+        // thus you are less prone to errors on that part
+        setState({pokemon: pokemonData, status: 'resolved'})
       })
       .catch(error => {
-        setError(error)
-        setStatus('rejected')
+        setState({error: error, status: 'rejected'})
       })
   }, [pokemonName])
 
