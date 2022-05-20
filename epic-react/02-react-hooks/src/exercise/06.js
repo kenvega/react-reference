@@ -10,11 +10,18 @@ import {
   PokemonForm,
 } from '../pokemon'
 
+// it's prefered to unmonunt and remount when recovering from an error
+// but if we are just changing the props then is not necessary to remount the errorboundary and the components inside
+
 function App() {
   const [pokemonName, setPokemonName] = useState('')
 
   function handleSubmit(newPokemonName) {
     setPokemonName(newPokemonName)
+  }
+
+  function handleReset() {
+    setPokemonName('')
   }
 
   return (
@@ -24,7 +31,8 @@ function App() {
       <div className="pokemon-info">
         {/* you can reset the error state in ErrorBoundary adding a key prop to the component */}
         {/* this unmounts and re-mounts the component that's why the error state is reset */}
-        <ErrorBoundary key={pokemonName} FallbackComponent={ErrorFallback}>
+        {/* but the key prop remounts the components inside too. So it's better handled with the onReset prop */}
+        <ErrorBoundary FallbackComponent={ErrorFallback} onReset={handleReset}>
           {/* when there is an error in PokemonInfo it will search for the nearest ErrorBoundary */}
           <PokemonInfo pokemonName={pokemonName} />
         </ErrorBoundary>
@@ -33,18 +41,19 @@ function App() {
   )
 }
 
-function ErrorFallback({error}) {
+function ErrorFallback({error, resetErrorBoundary}) {
   return (
     <div>
       There was an error:{' '}
       <pre style={{whiteSpace: 'normal'}}>{error.message}</pre>
+      <button onClick={resetErrorBoundary}>Reset to normal</button>
     </div>
   )
 }
 
 function PokemonInfo({pokemonName}) {
   const [state, setState] = useState({
-    status: 'idle',
+    status: pokemonName ? 'pending' : 'idle',
     pokemon: null,
     error: null,
   })
