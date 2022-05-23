@@ -452,3 +452,25 @@ react hooks
     we don't call document.createElement, that is what React does
       so if we need a specific DOM node, we have to ask it to React
         one way is to use a ref
+
+advanced react hooks
+
+  useReducer
+    used for when you want to separate state logic from the component that make state changes
+    when multiple state elements change together it's better to have an object that contains them
+
+    in convention you pass an action being an object maybe or something in particular
+      but for the API, the action can be anything you want actually
+
+    syntax
+
+      const [state, setStateFunction] = useReducer(useReducerFunction, initialState)
+
+    arguments of the useReducerFunction function
+
+      const useReducerFunction = (state, action) => { ... }
+
+        state - which is the current state value you are managing. the same value of state in the destructured array you return from useReducer
+        action - which is what is passed to the setStateFunction
+
+        * setStateFunction is also referred as the dispatch function
