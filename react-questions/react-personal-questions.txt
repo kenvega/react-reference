@@ -58,3 +58,19 @@ how to remove the <> and </> in this situation
   --
 
   talking with a friend told me the way is to create a common variable for the repeating part and create use a wrapper for one side
+
+
+what happens when you have a modal component
+  that shows based on a state coming from parent
+
+    and then when you submit something, the modal has to disappear but the endpoint still has to work
+
+      and after the endpoint was reached.. you need to show a confirmation somehow that it failed or not
+
+        but the request was initialized in the modal and if you already closed the modal it means you unmouted it
+
+          so when you unmount it, you still do the request even though the component is no longer there? and the response still works?
+
+            i need some components to ilustrate this better but this is a question from what i've currently see working on some modals
+
+

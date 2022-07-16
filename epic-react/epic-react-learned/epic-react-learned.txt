@@ -462,9 +462,13 @@ advanced react hooks
     in convention you pass an action being an object maybe or something in particular
       but for the API, the action can be anything you want actually
 
-    syntax
+    syntax of the useReducer hook
 
       const [state, setStateFunction] = useReducer(useReducerFunction, initialState)
+
+        something to note from the variables in this hook
+          the initialState and the state can be numbers, strings, etc
+          they don't necessarily have to be objects (following a redux convention)
 
     arguments of the useReducerFunction function
 
