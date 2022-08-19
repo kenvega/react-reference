@@ -478,3 +478,47 @@ advanced react hooks
         action - which is what is passed to the setStateFunction
 
         * setStateFunction is also referred as the dispatch function
+
+  memoization
+
+    a performance optimization technique
+
+    avoids recomputing a value for a given input by storing it and returning the same output when the same input is provided
+
+    also memoization also has referential equality for the values returned
+
+    caching is a form of memoization
+
+    memoization in React
+
+      memoization in React is implemented through its API in memo, useMemo and useCallback
+
+      React only keeps around the most recent value of the input and the result (caching size of 1)
+
+        how it will work
+
+          addTwo(3) // 5 is computed
+          addTwo(3) // 5 is returned from the cache
+          addTwo(2) // 4 is computed
+          addTwo(3) // 5 is computed again because the last input used was 2 and not 3 so the result for 3 was forgotten
+
+    more info here: https://epicreact.dev/memoization-and-react/
+
+  useCallback
+
+    when in your useEffect function callback you need to
+      call a function you would need to
+        put the arguments of that function in your dependencies array
+
+  useContext
+
+    sometimes the same problem should be better solved with composition (?)
+
+    context
+      insert some state into the react tree and then extract it anywhere else in the react tree without explicitly pass it down through props
+
+      it's like global variables in a way but without their problems like their maintainability
+
+react performance
+
+  
